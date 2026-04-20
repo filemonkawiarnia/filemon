@@ -1678,17 +1678,39 @@
 
   // Wypełnij select godzin na podstawie daty
   function updateHours() {
-    const val = resDate.value;
-    resTime.innerHTML = '<option value="">— Wybierz godzinę —</option>';
-    if (!val) return;
-    const dow = new Date(val + 'T12:00:00').getDay();
-    getHoursForDay(dow).forEach(h => {
-      const opt = document.createElement('option');
-      opt.value = h; opt.textContent = h;
-      resTime.appendChild(opt);
-    });
-  }
+  const val = resDate.value;
+  resTime.innerHTML = '<option value="">— Wybierz godzinę —</option>';
+  if (!val) return;
 
+  const dow = new Date(val + 'T12:00:00').getDay();
+  const allHours = getHoursForDay(dow);
+
+  const selectedDate = new Date(val + 'T00:00:00');
+  const today = new Date();
+  const isToday = selectedDate.toDateString() === today.toDateString();
+
+  allHours.forEach(h => {
+    if (isToday) {
+      const [hh, mm] = h.split(':').map(Number);
+      const slotTime = new Date();
+      slotTime.setHours(hh, mm, 0, 0);
+
+      // Minimalna godzina = teraz + 60 minut
+      const minTime = new Date(today.getTime() + 60 * 60 * 1000);
+      if (slotTime < minTime) return; // pomiń godziny za wczesne
+    }
+
+    const opt = document.createElement('option');
+    opt.value = h;
+    opt.textContent = h;
+    resTime.appendChild(opt);
+  });
+
+  // Jeśli po filtrowaniu nie ma żadnej godziny dziś
+  if (resTime.options.length === 1) {
+    resTime.innerHTML = '<option value="">— Brak dostępnych godzin na dziś —</option>';
+  }
+  }
   // Ustaw datę minimalną i ogranicz do niedziel jeśli potrzeba
   function applyDateConstraints() {
     if (onlySunday) {
