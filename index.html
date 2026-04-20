@@ -879,6 +879,50 @@
     display: block;
   }
 
+  /* ══ REGULAMIN ══ */
+  #regulamin {
+    background: white;
+    padding: 5rem 6rem;
+    position: relative;
+  }
+  .regulamin-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .regulamin-header { text-align: center; margin-bottom: 3rem; }
+  .regulamin-header .section-desc { margin: 0 auto; }
+  .regulamin-upload {
+    border: 2px dashed rgba(27,42,74,0.2);
+    border-radius: 20px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    background: var(--off-white);
+    transition: border-color 0.2s;
+  }
+  .regulamin-upload:hover { border-color: var(--fuchsia); }
+  .regulamin-upload .reg-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .regulamin-upload h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .regulamin-upload p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+  }
+  .regulamin-img {
+    width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 8px 40px rgba(27,42,74,0.12);
+  }
+
   /* ══ FOOTER ══ */
   footer {
     background: var(--navy-dark);
@@ -956,6 +1000,7 @@
     .form-row { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.2rem; }
     .age-banner .banner-grid { gap: 1rem; }
+    #regulamin { padding: 4rem 2rem; }
   }
 </style>
 </head>
@@ -964,8 +1009,8 @@
 <!-- AGE BANNER -->
 <div class="age-banner">
   <div class="banner-grid">
-    <span>⚠️ <strong>Ograniczenia wiekowe</strong> — dla bezpieczeństwa dzieci i komfortu kotów</span>
-    <span class="age-pill"><span class="dot dot-pink"></span> Pon–Pt: od 8 lat (6–12 godz.) — wymagana rezerwacja</span>
+    <span>⚠️ <strong>Ograniczenia wiekowe</strong> — dla bezpieczeństwa dzieci i komfortu kotów &nbsp;·&nbsp; <a href="#regulamin" style="color:var(--yellow); text-decoration:underline;">Zapoznaj się z regulaminem →</a></span>
+    <span class="age-pill"><span class="dot dot-pink"></span> Pon–Sob: od 8 lat — wymagana rezerwacja i dok. wieku</span>
     <span class="age-pill"><span class="dot dot-yellow"></span> Niedziela: od 5 lat — rezerwacja zalecana (max 5 dzieci)</span>
   </div>
 </div>
@@ -981,6 +1026,7 @@
     <li><a href="#wiek">Wiek & zasady</a></li>
     <li><a href="#koty">Nasze koty</a></li>
     <li><a href="#adopcja">Adopcja</a></li>
+    <li><a href="#regulamin">Regulamin</a></li>
     <li><a href="#galeria">Galeria</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
     <li><a href="#rezerwacja" class="nav-cta">Zarezerwuj stolik</a></li>
@@ -1083,15 +1129,15 @@
         <div class="wiek-card-header">
           <div class="wiek-icon">📅</div>
           <div>
-            <h3>Poniedziałek – Piątek</h3>
-            <div class="wiek-days">Godziny 6:00–12:00</div>
+            <h3>Poniedziałek – Sobota</h3>
+            <div class="wiek-days">Cały dzień otwarcia</div>
           </div>
         </div>
         <ul class="wiek-rules">
-          <li>Dzieci <strong>od 8 roku życia</strong> — wymagana rezerwacja stolika</li>
-          <li>Obowiązkowe zabranie ze sobą <strong>dokumentu lub zdjęcia dokumentu</strong> potwierdzającego wiek</li>
-          <li>Dzieci poniżej 8 roku życia nie są przyjmowane w tych godzinach</li>
-          <li>Rezerwacje dla dzieci prosimy oznaczać w formularzu — pomaga nam to w przygotowaniu</li>
+          <li>Przyjmujemy dzieci <strong>od 8 roku życia</strong></li>
+          <li>Wymagana <strong>obowiązkowa rezerwacja stolika</strong> dla dziecka</li>
+          <li>Prosimy o zabranie ze sobą <strong>dokumentu lub zdjęcia dokumentu</strong> potwierdzającego wiek dziecka</li>
+          <li>Dzieci poniżej 8 roku życia nie są przyjmowane w te dni — dla komfortu kotów i pozostałych gości</li>
         </ul>
       </div>
       <div class="wiek-card nd fade-up" style="transition-delay:0.1s">
@@ -1103,10 +1149,10 @@
           </div>
         </div>
         <ul class="wiek-rules">
-          <li>Dzieci <strong>od 5 roku życia</strong> są mile widziane przez cały dzień</li>
-          <li>Rezerwacja <strong>nie jest obowiązkowa</strong>, ale zdecydowanie zalecana</li>
-          <li>Maksymalnie <strong>5 dzieci jednocześnie</strong> w kawiarni — miejsca rozchodzą się szybko!</li>
-          <li>Przy braku rezerwacji wejście możliwe tylko jeśli limit nie jest wyczerpany</li>
+          <li>Przyjmujemy dzieci <strong>od 5 roku życia</strong></li>
+          <li>Rezerwacja <strong>nie jest obowiązkowa</strong>, ale bardzo zalecana</li>
+          <li>Maksymalnie <strong>5 dzieci jednocześnie</strong> na sali — miejsca rozchodzą się szybko!</li>
+          <li>Bez rezerwacji wejście możliwe tylko jeśli limit 5 dzieci nie jest wyczerpany</li>
         </ul>
       </div>
     </div>
@@ -1234,22 +1280,21 @@
   <div class="fade-up">
     <div class="section-tag yellow-tag">📅 Zaplanuj wizytę</div>
     <h2 class="section-title">Zarezerwuj <em>stolik</em></h2>
-    <p class="section-desc">Rezerwacje potwierdzamy ręcznie — bo liczba wolnych miejsc zmienia się co chwilę. Odezwiemy się do Ciebie w ciągu 2 godzin.</p>
+    <p class="section-desc">Rezerwacje potwierdzamy ręcznie — bo liczba wolnych miejsc zmienia się co chwilę. Odpiszemy do Ciebie w godzinach otwarcia kawiarni.</p>
 
     <div class="info-box">
       <span class="ii">⏰</span>
       <div>
         <h4>Godziny otwarcia</h4>
-        <div class="hours-row"><span class="day">Poniedziałek–Piątek</span><span class="time">09:00–20:00</span></div>
-        <div class="hours-row"><span class="day">Sobota</span><span class="time">10:00–21:00</span></div>
-        <div class="hours-row"><span class="day">Niedziela</span><span class="time">10:00–19:00</span></div>
+        <div class="hours-row"><span class="day">Poniedziałek–Czwartek</span><span class="time">11:00–19:00</span></div>
+        <div class="hours-row"><span class="day">Piątek–Niedziela</span><span class="time">11:00–19:30</span></div>
       </div>
     </div>
     <div class="info-box">
       <span class="ii">📋</span>
       <div>
         <h4>Jak to działa?</h4>
-        <p>Wypełniasz formularz → my sprawdzamy dostępność → potwierdzamy emailem lub telefonicznie. Proste i uczciwe.</p>
+        <p>Wypełniasz formularz → my sprawdzamy dostępność → potwierdzamy emailem lub telefonicznie w godzinach otwarcia kawiarni.</p>
       </div>
     </div>
     <div class="info-box" style="border-color:rgba(232,56,122,0.3); background:var(--fuchsia-pale);">
@@ -1271,7 +1316,7 @@
   <div class="fade-up" style="transition-delay:0.12s">
     <div class="form-card">
       <h3>Formularz rezerwacji</h3>
-      <p class="form-subtitle">Potwierdzimy dostępność i odpiszemy jak najszybciej (max 2 godz.).</p>
+      <p class="form-subtitle">Wypełnij formularz, a potwierdzimy rezerwację najszybciej jak to możliwe w godzinach otwarcia kawiarni.</p>
       <form id="reservationForm">
         <div class="form-row">
           <div class="form-group"><label>Imię i nazwisko</label><input type="text" name="imie" placeholder="Anna Kowalska" required></div>
@@ -1284,12 +1329,15 @@
             <label>Godzina</label>
             <select name="godzina" required>
               <option value="">— Wybierz —</option>
-              <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
-              <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
-              <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
-              <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
-              <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
-              <option>19:00</option>
+              <option>11:00</option><option>11:30</option>
+              <option>12:00</option><option>12:30</option>
+              <option>13:00</option><option>13:30</option>
+              <option>14:00</option><option>14:30</option>
+              <option>15:00</option><option>15:30</option>
+              <option>16:00</option><option>16:30</option>
+              <option>17:00</option><option>17:30</option>
+              <option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option>
             </select>
           </div>
         </div>
@@ -1339,6 +1387,33 @@
   </div>
 </section>
 
+<!-- REGULAMIN -->
+<section id="regulamin">
+  <div class="regulamin-inner">
+    <div class="regulamin-header fade-up">
+      <div class="section-tag navy-tag" style="justify-content:center;">📋 Zasady wizyty</div>
+      <h2 class="section-title">Regulamin <em>kawiarni</em></h2>
+      <p class="section-desc">Prosimy o zapoznanie się z regulaminem przed wizytą — dzięki temu każdy, w tym nasze koty, czuje się komfortowo i bezpiecznie.</p>
+    </div>
+    <div class="fade-up" style="transition-delay:0.1s">
+      <!-- REGULAMIN GRAFIKA:
+           Zamień poniższy blok .regulamin-upload na tag <img>:
+           <img src="zdjecia/regulamin.jpg" alt="Regulamin Filemon Kocia Kawiarnia" class="regulamin-img">
+           lub jeśli masz PDF jako obraz:
+           <img src="zdjecia/regulamin.png" alt="Regulamin" class="regulamin-img">
+      -->
+      <div class="regulamin-upload">
+        <div class="reg-icon">📄</div>
+        <h4>Tu pojawi się grafika z regulaminem</h4>
+        <p>Wgraj plik graficzny (JPG lub PNG) z regulaminem kawiarni i zastąp ten placeholder tagiem <code>&lt;img&gt;</code> zgodnie z komentarzem w kodzie.</p>
+        <a href="mailto:filemonkawiarnia@gmail.com" class="btn-primary" style="display:inline-flex; font-size:0.82rem; padding:0.7rem 1.5rem;">
+          Masz pytania? Napisz do nas
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- KONTAKT -->
 <section id="kontakt">
   <div class="kontakt-inner">
@@ -1366,7 +1441,7 @@
       <div class="cc">
         <div class="ci">⏰</div>
         <h4>Godziny</h4>
-        <p>Pon–Pt: 09–20<br>Sob: 10–21<br>Nd: 10–19</p>
+        <p>Pon–Czw: 11:00–19:00<br>Pt–Nd: 11:00–19:30</p>
       </div>
     </div>
     <div class="map-embed fade-up" style="transition-delay:0.15s">
@@ -1421,26 +1496,18 @@
     const d = new FormData(this);
 
     try {
-      // PODŁĄCZ FORMSPREE — instrukcja:
-      // 1. Wejdź na https://formspree.io i utwórz konto
-      // 2. Nowy formularz → podaj filemonkawiarnia@gmail.com
-      // 3. Skopiuj endpoint (np. https://formspree.io/f/XXXXXXXX)
-      // 4. Odkomentuj poniższy blok i wklej swój URL:
-      //
-      // const res = await fetch('https://formspree.io/f/TWOJ_ID', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      //   body: JSON.stringify({
-      //     _subject: '🐾 Nowy formularz adopcyjny — Filemon',
-      //     imie: d.get('imie'), nazwisko: d.get('nazwisko'),
-      //     email: d.get('email'), telefon: d.get('telefon'),
-      //     kot: d.get('kot'), mieszkanie: d.get('mieszkanie'),
-      //     powod: d.get('powod')
-      //   })
-      // });
-      // if (!res.ok) throw new Error();
-
-      await new Promise(r => setTimeout(r, 1000)); // usuń po podłączeniu Formspree
+      const res = await fetch('https://formspree.io/f/mrerlbgv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '🐾 Nowy formularz adopcyjny — Filemon',
+          imie: d.get('imie'), nazwisko: d.get('nazwisko'),
+          email: d.get('email'), telefon: d.get('telefon'),
+          kot: d.get('kot'), mieszkanie: d.get('mieszkanie'),
+          powod: d.get('powod')
+        })
+      });
+      if (!res.ok) throw new Error();
       document.getElementById('adoptionForm').style.display = 'none';
       document.getElementById('adoptionSuccess').style.display = 'block';
       showToast('Formularz adopcyjny wysłany! 🐾', '🐾');
@@ -1459,22 +1526,18 @@
     const d = new FormData(this);
 
     try {
-      // ODKOMENTUJ po podłączeniu Formspree (osobny formularz lub ten sam):
-      //
-      // const res = await fetch('https://formspree.io/f/TWOJ_ID', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      //   body: JSON.stringify({
-      //     _subject: '☕ Nowa rezerwacja stolika — Filemon',
-      //     imie: d.get('imie'), email: d.get('email'),
-      //     telefon: d.get('telefon'), data_wizyty: d.get('data'),
-      //     godzina: d.get('godzina'), osoby: d.get('osoby'),
-      //     dzieci: d.get('dzieci'), uwagi: d.get('uwagi')
-      //   })
-      // });
-      // if (!res.ok) throw new Error();
-
-      await new Promise(r => setTimeout(r, 1000));
+      const res = await fetch('https://formspree.io/f/mrerlbgv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '☕ Nowa rezerwacja stolika — Filemon',
+          imie: d.get('imie'), email: d.get('email'),
+          telefon: d.get('telefon'), data_wizyty: d.get('data'),
+          godzina: d.get('godzina'), osoby: d.get('osoby'),
+          dzieci: d.get('dzieci'), uwagi: d.get('uwagi')
+        })
+      });
+      if (!res.ok) throw new Error();
       document.getElementById('reservationForm').style.display = 'none';
       document.getElementById('reservationSuccess').style.display = 'block';
       showToast('Prośba o rezerwację wysłana! ☕', '☕');
