@@ -1698,7 +1698,7 @@
 <!-- Modal: rezerwacje wyłączone -->
 <div class="modal-overlay" id="modalBlocked">
   <div class="modal-box">
-    <div class="modal-icon modal-icon-blocked">⏸️</div>
+    <div class="modal-icon modal-icon-blocked">❌️</div>
     <div class="modal-title">Stoliki zajęte</div>
     <div class="modal-text">
       Wszystkie stoliki są w tym momencie <strong>zajęte</strong>.<br>
@@ -1788,7 +1788,7 @@
       slotTime.setHours(hh, mm, 0, 0);
 
       // Minimalna godzina = teraz + 60 minut
-      const minTime = new Date(today.getTime() + 60 * 60 * 1000);
+      const minTime = new Date(today.getTime() + 40 * 60 * 1000);
       if (slotTime < minTime) return; // pomiń godziny za wczesne
     }
 
