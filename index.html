@@ -1040,6 +1040,36 @@
 </head>
 <body>
 
+/* ══ ALERT BANNER ══ */
+  .alert-banner {
+  background: linear-gradient(135deg, #FFF3CD, #FFEAA0);
+  border-bottom: 3px solid var(--yellow);
+  border-top: 3px solid var(--yellow);
+  padding: 0.9rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5a4200;
+  line-height: 1.6;
+  position: relative;
+  z-index: 299;
+}
+.alert-banner strong {
+  color: #3a2a00;
+  font-size: 1rem;
+}
+.alert-banner .alert-icon {
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+/* Wersja czerwona — np. dla pilnych info */
+.alert-banner.alert-red {
+  background: linear-gradient(135deg, #FFE5E5, #FFCCCC);
+  border-color: var(--fuchsia);
+  color: #5a0020;
+}
+.alert-banner.alert-red strong { color: #3a0015; }
+  
 <!-- AGE BANNER -->
 <div class="age-banner">
   <div class="banner-grid">
@@ -1049,6 +1079,14 @@
   </div>
 </div>
 
+<!-- ALERT BANNER — usuń lub ukryj gdy nieaktualne -->
+<div class="alert-banner">
+  <span class="alert-icon">🏖</span>
+  <strong>Majówka:</strong>
+  1-3 maja pracujemy bez zmian 
+  <strong>11:00 - 19:00</strong>
+</div>
+  
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
