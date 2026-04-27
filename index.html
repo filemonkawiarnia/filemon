@@ -2055,6 +2055,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           _subject: '☕ Nowa rezerwacja stolika — Filemon',
+          czas_rezerwacji: new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' }),
           imie: d.get('imie'),
           telefon: d.get('telefon'), data_wizyty: d.get('data'),
           godzina: d.get('godzina'), osoby: d.get('osoby'),
