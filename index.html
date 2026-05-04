@@ -2067,14 +2067,14 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           _subject: '☕ Nowa rezerwacja stolika — Filemon',
-          czas_rezerwacji: new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' }),
-          imie: d.get('imie'),
+          imie_i_nazwisko: d.get('imie'),
           telefon: d.get('kierunkowy') + ' ' + d.get('telefon'), data_wizyty: d.get('data'),
-          godzina: d.get('godzina'), osoby: d.get('osoby'),
-          liczba_dzieci: d.get('liczba_dzieci'),
+          godzina: d.get('godzina'), osoby_powyzej_12lat: d.get('osoby'),
+          dzieci_ponizej_12_lat: d.get('liczba_dzieci'),
           wiek_najmlodszego: d.get('wiek_najmlodszego') || 'brak dzieci',
-          uwagi: d.get('uwagi')
-        })
+          specjalne_zyczenia: d.get('uwagi'),
+          czas_rezerwacji: new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' }),
+         })
       });
       if (!res.ok) throw new Error();
       document.getElementById('reservationForm').style.display = 'none';
