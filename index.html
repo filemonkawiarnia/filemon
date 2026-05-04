@@ -1824,7 +1824,19 @@
     <button class="btn-modal-ok" onclick="document.getElementById('modalSuccess').classList.remove('active')">OK</button>
   </div>
 </div>
-
+  
+<!-- POPUP: tylko niedziela dla dzieci 5–7 lat -->
+<div class="popup-overlay hidden" id="modalTylkoNd">
+  <div class="popup-box">
+    <div class="popup-icon-wrap">📅</div>
+    <div class="popup-title">Rezerwacja tylko w niedzielę</div>
+    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; margin:0.8rem 0 1.5rem;">
+      Dzieci w wieku 5–7 lat przyjmujemy wyłącznie w niedzielę (11:00–19:30).
+    </p>
+    <button class="popup-btn" onclick="document.getElementById('modalTylkoNd').classList.add('hidden')">Rozumiem</button>
+  </div>
+</div>
+  
 <!-- Modal: rezerwacje wyłączone -->
 <div class="modal-overlay" id="modalBlocked">
   <div class="modal-box">
@@ -1967,10 +1979,10 @@
       resSubmit.disabled = true;
       onlySunday = false;
     } else if (age <= 7) {
-      msgTylkoNd.style.display = 'flex';
-      onlySunday = true;
-      resSubmit.disabled = false;
-      applyDateConstraints();
+  document.getElementById('modalTylkoNd').classList.remove('hidden');
+  onlySunday = true;
+  resSubmit.disabled = false;
+  applyDateConstraints();
     } else {
       // 8–12
       msgDokument.style.display = 'flex';
@@ -1990,7 +2002,7 @@
     if (onlySunday && resDate.value && !isSunday(resDate.value)) {
       resDate.value = '';
       resTime.innerHTML = '<option value="">— Wybierz godzinę —</option>';
-      showToast('Dzieci w wieku 5–7 lat — rezerwacja tylko w niedzielę.', '📅');
+      document.getElementById('modalTylkoNd').classList.remove('hidden');
       return;
     }
     updateHours();
