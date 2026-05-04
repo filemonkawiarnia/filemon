@@ -2098,7 +2098,7 @@
           _subject: '☕ Nowa rezerwacja stolika — Filemon',
           czas_rezerwacji: new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' }),
           imie: d.get('imie'),
-          telefon: d.get('telefon'), data_wizyty: d.get('data'),
+          telefon: d.get('kierunkowy') + ' ' + d.get('telefon'), data_wizyty: d.get('data'),
           godzina: d.get('godzina'), osoby: d.get('osoby'),
           liczba_dzieci: d.get('liczba_dzieci'),
           wiek_najmlodszego: d.get('wiek_najmlodszego') || 'brak dzieci',
