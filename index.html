@@ -1559,7 +1559,24 @@
       <form id="reservationForm">
         <div class="form-row">
           <div class="form-group"><label>Imię i nazwisko</label><input type="text" name="imie" placeholder="imie i nazwisko" required></div>
-          <div class="form-group"><label>Telefon (na ten numer dostaniesz potwierdzenie)</label><input type="tel" name="telefon" placeholder="nr telefonu" required></div>
+          <div class="form-group">
+  <label>Telefon (na ten numer dostaniesz potwierdzenie)</label>
+  <div style="display:flex; gap:0.5rem;">
+    <select id="kierunkowy" name="kierunkowy" style="width:auto; flex-shrink:0;">
+      <option value="+48">🇵🇱 +48</option>
+      <option value="+49">🇩🇪 +49</option>
+      <option value="+44">🇬🇧 +44</option>
+      <option value="+33">🇫🇷 +33</option>
+      <option value="+39">🇮🇹 +39</option>
+      <option value="+34">🇪🇸 +34</option>
+      <option value="+380">🇺🇦 +380</option>
+      <option value="+1">🇺🇸 +1</option>
+      <option value="+46">🇸🇪 +46</option>
+      <option value="+420">🇨🇿 +420</option>
+    </select>
+    <input type="tel" id="inputTelefon" name="telefon" placeholder="123-456-789" maxlength="11" required style="flex:1;">
+  </div>
+          </div>
         </div>
 
         <!-- DZIECI -->
@@ -2032,7 +2049,7 @@
         body: JSON.stringify({
           _subject: '🐾 Nowy formularz adopcyjny — Filemon',
           imie: d.get('imie'), nazwisko: d.get('nazwisko'),
-          email: d.get('email'), telefon: d.get('telefon'),
+          email: d.get('email'), telefon: d.get('kierunkowy') + ' ' + d.get('telefon'),
           kot: d.get('kot'), mieszkanie: d.get('mieszkanie'),
           powod: d.get('powod')
         })
@@ -2096,6 +2113,27 @@
       btn.textContent = orig; btn.disabled = false;
       showToast('Błąd wysyłki. Napisz bezpośrednio na email lub zadzwoń.', '⚠️');
     }
+  });
+  // ── FORMATOWANIE TELEFONU: xxx-xxx-xxx ──
+  const inputTelefon = document.getElementById('inputTelefon');
+
+  function formatPhone(raw) {
+    let digits = raw.replace(/\D/g, '').slice(0, 9);
+    if (digits.length > 6)
+      return digits.slice(0,3) + '-' + digits.slice(3,6) + '-' + digits.slice(6);
+    if (digits.length > 3)
+      return digits.slice(0,3) + '-' + digits.slice(3);
+    return digits;
+  }
+
+  inputTelefon.addEventListener('input', function () {
+    this.value = formatPhone(this.value);
+  });
+
+  inputTelefon.addEventListener('paste', function (e) {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+    this.value = formatPhone(paste);
   });
 </script>
 </body>
