@@ -525,6 +525,36 @@
   .feat .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
   .feat h4 { font-size: 0.92rem; font-weight: 800; color: var(--navy); margin-bottom: 0.3rem; }
   .feat p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+  .feat-img {
+  position: relative;
+  min-height: 160px;
+  background-image: var(--feat-bg);
+  background-size: cover;
+  background-position: center;
+  border: none !important;
+  overflow: hidden;
+  padding: 0;
+}
+.feat-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  background: rgba(27, 42, 74, 0.52);
+  z-index: 1;
+  border-radius: inherit;
+}
+.feat-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.4rem 1.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.feat-img h4 { color: #fff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+.feat-img p  { color: rgba(255,255,255,0.82) !important; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
 
   /* ══ KOTY ══ */
   #koty {
