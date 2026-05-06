@@ -1943,11 +1943,17 @@
 
   function isOnlySunday() { return onlySunday; }
 
-  // Przelicz czy dana data jest niedzielą
-  function isSunday(dateStr) {
-    if (!dateStr) return false;
-    return new Date(dateStr + 'T12:00:00').getDay() === 0;
-  }
+  
+  // Wyjątkowe dni kiedy dzieci 5-7 lat mogą przyjść (poza niedzielą)
+const WYJATKOWE_DNI = [
+  '2026-06-01', // Dzień Dziecka
+];
+// Przelicz czy dana data jest niedzielą
+function isSunday(dateStr) {
+  if (!dateStr) return false;
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.getDay() === 0 || WYJATKOWE_DNI.includes(dateStr);
+}
 
   // Wypełnij select godzin na podstawie daty
   function updateHours() {
