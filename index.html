@@ -220,7 +220,16 @@
     transition: all 0.2s;
   }
   .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-3px); }
+  .btn-yellow {
+  background: var(--yellow);
+  color: var(--navy);
+  box-shadow: 0 6px 24px rgba(245,200,66,0.35);
+}
 
+.btn-yellow:hover {
+  background: #FFD95E;
+  box-shadow: 0 10px 32px rgba(245,200,66,0.45);
+}
   .hero-stats {
     display: flex;
     gap: 2rem;
@@ -1217,7 +1226,7 @@
     <div class="hero-btns">
       <a href="#rezerwacja" class="btn-primary">☕ Zarezerwuj stolik</a>
       <a href="#koty" class="btn-outline">🐱 Adoptuj kota</a>
-      <a href="https://filemonstowarzyszenie.pl" class="btn-primary" target="_blank" >Stowarzyszenie Filemon</a>
+      <a href="https://filemonstowarzyszenie.pl" class="btn-primary btn-yellow" target="_blank" >Stowarzyszenie Filemon</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
