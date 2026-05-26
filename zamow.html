@@ -1352,7 +1352,7 @@
     } else { showErr('phoneErr', false); setErr('phone', false); }
 
     const date = document.getElementById('pickupDate').value;
-    const minD = new Date(); minD.setDate(minD.getDate() + 5);
+    const minD = new Date(); minD.setDate(minD.getDate() + 2);
     if (!date || new Date(date + 'T12:00:00') < minD) {
       showErr('dateErr', true); setErr('pickupDate', true); valid = false;
     } else { showErr('dateErr', false); setErr('pickupDate', false); }
