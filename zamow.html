@@ -1282,7 +1282,7 @@
 
     const total = selected.reduce((s, c) => s + c.price, 0);
     totalEl.style.display = 'block';
-    totalEl.textContent = `Lacznie: ${total} zl`;
+    totalEl.textContent = `Łącznie: ${total} zł`;
   }
 
   function removeCake(name) {
@@ -1365,7 +1365,7 @@
     if (!valid) return;
 
     const btn = document.getElementById('btnSubmit');
-    btn.textContent = 'Wysylanie...';
+    btn.textContent = 'Wysyłanie...';
     btn.disabled = true;
 
     const cakeList = selected.map(c => `${c.name} (${c.price} zl)`).join(', ');
@@ -1406,9 +1406,9 @@
       document.getElementById('successOverlay').classList.add('show');
 
     } catch {
-      btn.textContent = 'Wyslij zamowienie';
+      btn.textContent = 'Wyślij zamówienie';
       btn.disabled = false;
-      alert('Wystapil blad podczas wysylania. Prosimy sprobowac ponownie lub skontaktowac sie bezposrednio z kawiarnia.');
+      alert('Wystąpił błąd podczas wysyłania. Prosimy spróbować ponownie lub skontaktować się bezpośrednio z kawiarnią.');
     }
   }
 
