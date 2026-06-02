@@ -451,8 +451,8 @@
 
         <div class="two-col">
           <div class="field-group">
-            <label>Data przyjęcia <span class="req">*</span></label>
-            <input type="date" id="orderDate">
+            <label>Data przyjęcia</label>
+            <input type="date" id="orderDate" readonly style="background:var(--navy-light);cursor:default;color:var(--text-mid);">
           </div>
           <div class="field-group">
             <label>Data odbioru <span class="req">*</span></label>
@@ -1095,10 +1095,19 @@ function buildReceipt(o, copy){
     push(line('Miejsce: Filemon, Hallera 21a'));
     push(blank());
 
-    // Miejsce na uwagi (pusty wiersz)
-    push(hr());
-    push(line('Uwagi: ______________________________'));
-    push(blank());
+    // Uwagi (tylko jeśli wpisane)
+    if(o.notes){
+      push(hr());
+      push(BOLD_ON);push(line('UWAGI:'));push(BOLD_OFF);
+      const words2=o.notes.split(' ');
+      let row2='';
+      words2.forEach(w=>{
+        if((row2+' '+w).trim().length<=W){row2=(row2+' '+w).trim();}
+        else{push(line(row2));row2=w;}
+      });
+      if(row2)push(line(row2));
+      push(blank());
+    }
 
     // Stopka
     push(hr('*'));
