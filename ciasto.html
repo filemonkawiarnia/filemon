@@ -836,8 +836,8 @@ async function submitOrder(){
 
   const total=getTotal();
   const cakeList=sel.map(c=>c.name+' ('+c.price+' zl)').join(', ');
-  const orderDate=document.getElementById('orderDate').value;
-  const notes=document.getElementById('notes').value.trim();
+  const now2=new Date();
+  const orderDate=now2.toLocaleDateString('pl-PL');const notes=document.getElementById('notes').value.trim();
   const paySummary=getPaySummary();
   const now=new Date().toLocaleString('pl-PL',{timeZone:'Europe/Warsaw'});
 
