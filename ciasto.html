@@ -637,7 +637,6 @@ document.addEventListener('keydown',e=>{if(document.getElementById('pin-screen')
 (function initDates(){
   const today = new Date();
   const fmt = d => d.toISOString().split('T')[0];
-  document.getElementById('orderDate').value = fmt(today);
   const minPickup = new Date(today);
   minPickup.setDate(minPickup.getDate() + 2);
   document.getElementById('pickupDate').min = fmt(minPickup);
