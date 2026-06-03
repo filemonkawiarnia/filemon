@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Druku — Filemon</title>
+<style>
+
+  /* ═══════════════════════════════════════
+     TUTAJ ZMIENIASZ USTAWIENIA WYDRUKU
+  ═══════════════════════════════════════ */
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body {
+      font-size: 13pt !important;       /* rozmiar czcionki */
+      font-weight: 700 !important;      /* grubość: 400=normalna, 700=gruba, 900=max */
+      line-height: 1.3 !important;      /* odstęp między wierszami */
+      color: #000 !important;
+      background: #fff !important;
+    }
+    body * { color: #000 !important; }
+    @page {
+      margin: 8mm;                      /* marginesy ze wszystkich stron */
+    }
+    .no-print { display: none !important; }
+  }
+
+  /* Wygląd na ekranie */
+  body { font-family: 'Courier New', monospace; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; padding: 2rem; }
+  .receipt { background: #fff; width: 72mm; padding: 6mm; box-shadow: 0 4px 20px rgba(0,0,0,0.15); font-size: 11pt; line-height: 1.4; white-space: pre-wrap; }
+  .btn { margin: 1.5rem 0; padding: 1rem 3rem; font-size: 1.2rem; font-weight: 800; background: #E8387A; color: #fff; border: none; border-radius: 12px; cursor: pointer; }
+  .btn:hover { background: #C4205E; }
+  .info { font-family: sans-serif; font-size: 0.82rem; color: #666; margin-bottom: 1rem; text-align: center; line-height: 1.6; }
+  hr { border: none; border-top: 1px dashed #000; margin: 2px 0; }
+  .bold { font-weight: 900; }
+  .center { text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="no-print info">
+  Zmień parametry w sekcji <strong>@media print</strong> w kodzie,<br>
+  a następnie kliknij TEST aby sprawdzić efekt.
+</div>
+
+<button class="btn no-print" onclick="window.print()">🖨️ TEST — Drukuj</button>
+
+<!-- PODGLĄD PARAGONU NA EKRANIE -->
+<div class="receipt">
+<div class="center bold">FILEMON</div>
+<div class="center">Kocia Kawiarnia</div>
+<div class="center">ul. Hallera 21a, Starogard Gdanski</div>
+<div class="center">tel. 576-357-522</div>
+<br>
+<hr>
+<div class="center bold">** KOPIA KAWIARNI **</div>
+<hr>
+<br>
+<div class="center bold">POTWIERDZENIE ZAMOWIENIA</div>
+<br>
+<div class="bold">ZAMOWIENIE:</div>
+<div>Tort Rafaello               180 zl</div>
+<div>Szarlotka                   160 zl</div>
+<div>Sernik Oreo                 160 zl</div>
+<div>Beza jagodzianka            165 zl</div>
+<div>Doplata za dodatki:          20 zl</div>
+<hr>
+<div class="bold">LACZNIE:                    685 zl</div>
+<br>
+<hr>
+<div class="bold">KLIENT:</div>
+<div>Anna Kowalska</div>
+<div>tel. 500-123-456</div>
+<br>
+<hr>
+<div class="bold">TERMINY:</div>
+<div>Przyjeto:        02.06.2026 14:35</div>
+<div>Odbior:          piątek, 5 czerwca 2026</div>
+<div>Godz. odbioru:   14:00</div>
+<br>
+<hr>
+<div class="bold">PLATNOSC:</div>
+<div>Zadatek 30%: 206 zl</div>
+<div>Pozostalo: 479 zl</div>
+<br>
+<hr>
+<div class="bold">UWAGI:</div>
+<div>Swieczka z cyfra 18, bez orzechow, napis "Sto lat Zosiu"</div>
+<br>
+<hr>
+<div class="center">-- kopia wewnetrzna --</div>
+</div>
+
+<button class="btn no-print" onclick="window.print()">🖨️ TEST — Drukuj</button>
+
+</body>
+</html>
