@@ -945,20 +945,14 @@ function buildReceipt(o, copy){
 
   if(isCafe){
     // ═══════════ KOPIA KAWIARNI (pełna) ═══════════
-    push(line('Kocia Kawiarnia'));
-    push(line('ul. Hallera 21a, Starogard Gdanski'));
-    push(line('tel. 576-357-522'));
-    push(blank());
-    push(hr('='));
     push(BOLD_ON);
     push(lineC('** KOPIA KAWIARNI **'));
     push(BOLD_OFF);
     push(hr('='));
     push(blank());
     push(BOLD_ON);
-    push(lineC('POTWIERDZENIE ZAMOWIENIA'));
+    push(line('POTWIERDZENIE ZAMOWIENIA'));
     push(BOLD_OFF);
-    push(blank());
 
     const now=new Date();
     const dateStr=now.toLocaleDateString('pl-PL');
@@ -989,14 +983,12 @@ function buildReceipt(o, copy){
     push(BOLD_ON);
     push(lineKV('LACZNIE:',o.total+' zl'));
     push(BOLD_OFF);
-    push(blank());
 
     push(hr());
     push(BOLD_ON);push(line('TERMINY:'));push(BOLD_OFF);
     push(lineKV('Przyjeto:',o.orderDate));
     push(lineKV('Odbior:',o.pickupDate));
     push(lineKV('Godz. odbioru:',o.pickupTime));
-    push(blank());
 
     push(hr());
     push(BOLD_ON);push(line('PLATNOSC:'));push(BOLD_OFF);
@@ -1005,7 +997,6 @@ function buildReceipt(o, copy){
     if(o.paySummary.voucher){
       push(line('Nr vouchera: '+o.paySummary.voucher));
     }
-    push(blank());
 
     if(o.notes){
       push(hr());
@@ -1026,15 +1017,15 @@ function buildReceipt(o, copy){
 
   } else {
     // ═══════════ KOPIA KLIENTA (skrócona) ═══════════
+    push(BOLD_ON);
     push(line('ul. Hallera 21a, Starogard Gdanski'));
     push(line('tel. 576-357-522'));
-    push(blank());
-    push(hr('='));
-    push(BOLD_ON);
-    push(lineC('POTWIERDZENIE ZAMOWIENIA'));
     push(BOLD_OFF);
     push(hr('='));
-    push(blank());
+    push(BOLD_ON);
+    push(line('POTWIERDZENIE ZAMOWIENIA'));
+    push(BOLD_OFF);
+    push(hr('='));
 
     // Zamówione pozycje
     push(ALIGN_L);
@@ -1051,7 +1042,6 @@ function buildReceipt(o, copy){
     push(BOLD_ON);
     push(lineKV('LACZNIE:',o.total+' zl'));
     push(BOLD_OFF);
-    push(blank());
 
     // Płatność
     push(hr());
@@ -1061,14 +1051,12 @@ function buildReceipt(o, copy){
     if(o.paySummary.voucher){
       push(line('Nr vouchera: '+o.paySummary.voucher));
     }
-    push(blank());
 
     // Termin odbioru
     push(hr());
     push(BOLD_ON);push(line('ODBIOR:'));push(BOLD_OFF);
     push(lineKV('Data:',o.pickupDate));
-    push(lineKV('Godzina:',o.pickupTime));
-    push(blank());
+    push(lineKV('Odbior od godz:',o.pickupTime));
 
 
     // Uwagi (tylko jeśli wpisane)
@@ -1089,8 +1077,8 @@ function buildReceipt(o, copy){
     push(hr('*'));
     push(ALIGN_C);
     push(BOLD_ON);
-    push(lineC('PROSIMY ZACHOWAC'));
-    push(lineC('POTWIERDZENIE DO ODBIORU'));
+    push(line('PROSIMY ZACHOWAC'));
+    push(line('POTWIERDZENIE DO ODBIORU'));
     push(BOLD_OFF);
     push(hr('*'));
     push(blank());
