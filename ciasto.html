@@ -853,8 +853,12 @@ async function submitOrder(){
   document.getElementById('successOverlay').classList.add('show');
   document.getElementById('printStatus').textContent='';
 }
-function closePopup(){document.getElementById('successOverlay').classList.remove('show');}
- 
+function closePopup(){document.getElementById('successOverlay').classList.remove('show');logout();}
+function logout(){
+  sessionStorage.removeItem(_SK);
+  location.reload();
+}
+  
   async function printOnly(){
   lastOrder = null;
   await submitOrder();
