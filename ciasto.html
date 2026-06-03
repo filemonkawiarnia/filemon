@@ -550,6 +550,7 @@
 
         <div style="margin-top:1.2rem;">
           <button class="btn-submit" id="btnSubmit" onclick="submitOrder()">Wyślij zamówienie</button>
+          <button class="btn-print" id="btnPrintOnly" onclick="printOnly()" style="margin-top:0.7rem;">Drukuj bez wysyłania maila</button>
         </div>
 
         <p class="form-note">Filemon Kocia Kawiarnia &bull; ul. Hallera 21a, Starogard Gdański &bull; 11:00–19:00</p>
@@ -853,6 +854,12 @@ async function submitOrder(){
   document.getElementById('printStatus').textContent='';
 }
 function closePopup(){document.getElementById('successOverlay').classList.remove('show');}
+ 
+  async function printOnly(){
+  await submitOrder();
+  // submitOrder buduje lastOrder i pokazuje popup — my dodatkowo od razu drukujemy
+  if(lastOrder) await doPrint();
+    }
 
 /* ══════════ PRINT BUTTON (main) ══════════ */
 function printOrder(){
