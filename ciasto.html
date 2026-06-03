@@ -900,7 +900,7 @@ const ALIGN_C=[ESC,0x61,0x01];
 const ALIGN_L=[ESC,0x61,0x00];
 const ALIGN_R=[ESC,0x61,0x02];
 const SIZE_BIG=[GS,0x21,0x11];
-const SIZE_NORM=[GS,0x21,0x00];
+const SIZE_NORM=[GS,0x21,0x01];
 const CUT=[GS,0x56,0x42,0x05];
 const LF=[0x0A];
 
@@ -1081,14 +1081,6 @@ function buildReceipt(o, copy){
     push(lineKV('Godzina:',o.pickupTime));
     push(blank());
 
-    // Data i miejsce przyjęcia
-    push(hr());
-    const now2=new Date();
-    const dateStr2=now2.toLocaleDateString('pl-PL');
-    const timeStr2=now2.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
-    push(lineKV('Przyjeto:',dateStr2+' '+timeStr2));
-    push(line('Miejsce: Filemon, Hallera 21a'));
-    push(blank());
 
     // Uwagi (tylko jeśli wpisane)
     if(o.notes){
