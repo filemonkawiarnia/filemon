@@ -496,10 +496,10 @@
         <div class="field-group">
           <label>Forma płatności <span class="req">*</span></label>
           <div class="payment-tabs">
-            <button type="button" class="pay-tab" onclick="selectPay('full')">Zapłacono</button>
-            <button type="button" class="pay-tab" onclick="selectPay('defer')">Do zapłaty przy odbiorze</button>
-            <button type="button" class="pay-tab" onclick="selectPay('amt')">Zadatek kwotowo</button>
-            <button type="button" class="pay-tab" onclick="selectPay('voucher')">Voucher / Licytacja</button>
+          <button type="button" class="pay-tab" onclick="selectPay('full', this)">Zapłacono</button>
+          <button type="button" class="pay-tab" onclick="selectPay('defer', this)">Do zapłaty przy odbiorze</button>
+          <button type="button" class="pay-tab" onclick="selectPay('amt', this)">Zadatek kwotowo</button>
+          <button type="button" class="pay-tab" onclick="selectPay('voucher', this)">Voucher / Licytacja</button>  
           </div>
           <div class="err-msg" id="payErr">Proszę wybrać formę płatności.</div>
         </div>
@@ -697,10 +697,10 @@ function selectStaff(name){
 
 /* ══════════ PAYMENT ══════════ */
 let selectedPay = '';
-function selectPay(type){
+function selectPay(type, btn){
   selectedPay=type;
   document.querySelectorAll('.pay-tab').forEach(b=>b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  btn.classList.add('active');
   ['full','defer','amt','voucher'].forEach(p=>document.getElementById('panel-'+p).classList.remove('visible'));
   document.getElementById('panel-'+type).classList.add('visible');
   document.getElementById('payErr').style.display='none';
@@ -781,7 +781,7 @@ async function submitOrder(){
   const phone=document.getElementById('phone').value.trim();
   if(!/^\d{3}-\d{3}-\d{3}$/.test(phone)){showErr('phoneErr',true);setErr('phone',true);valid=false;}else{showErr('phoneErr',false);setErr('phone',false);}
   const pickupDate=document.getElementById('pickupDate').value;
-  const minD=new Date();minD.setDate(minD.getDate()+2);
+  const minD=new Date();minD.setDate(minD.getDate()+2);minD.setHours(0,0,0,0);
   if(!pickupDate||new Date(pickupDate+'T12:00:00')<minD){showErr('dateErr',true);setErr('pickupDate',true);valid=false;}else{showErr('dateErr',false);setErr('pickupDate',false);}
   const time=document.getElementById('pickupTime').value;
   if(!time){showErr('timeErr',true);setErr('pickupTime',true);valid=false;}else{showErr('timeErr',false);setErr('pickupTime',false);}
@@ -856,10 +856,10 @@ async function submitOrder(){
 function closePopup(){document.getElementById('successOverlay').classList.remove('show');}
  
   async function printOnly(){
+  lastOrder = null;
   await submitOrder();
-  // submitOrder buduje lastOrder i pokazuje popup — my dodatkowo od razu drukujemy
   if(lastOrder) await doPrint();
-    }
+  }
 
 /* ══════════ PRINT BUTTON (main) ══════════ */
 function printOrder(){
