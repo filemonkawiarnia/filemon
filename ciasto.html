@@ -701,7 +701,7 @@ function selectPay(type){
   selectedPay=type;
   document.querySelectorAll('.pay-tab').forEach(b=>b.classList.remove('active'));
   event.currentTarget.classList.add('active');
-  ['full','defer','pct','amt','voucher'].forEach(p=>document.getElementById('panel-'+p).classList.remove('visible'));
+  ['full','defer','amt','voucher'].forEach(p=>document.getElementById('panel-'+p).classList.remove('visible'));
   document.getElementById('panel-'+type).classList.add('visible');
   document.getElementById('payErr').style.display='none';
   updatePayCalc();
