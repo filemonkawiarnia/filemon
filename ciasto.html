@@ -981,7 +981,7 @@ function buildReceipt(o, copy){
   // GS ( E — ustaw najwyższą gęstość druku (dla drukarek NPOS/Epson)
   push(INIT);
   push(INIT);
-  push([0x1B,0x37,0x07,0x07,0x00]); // ESC 7 — max heating time, max intensity (NPOS)
+  push([0x1B,0x37,0x08,0x08,0x00]); // ESC 7 — max heating time, max intensity (NPOS)
   push([ESC, 0x33, 0x00]);
   push([0x1D,0x28,0x45,0x02,0x00,0x31,0x04]);
 
@@ -1001,7 +1001,7 @@ function buildReceipt(o, copy){
     
     // ═══════════ KOPIA KAWIARNI (pełna) ═══════════
     push(SIZE_BIG);
-    push(lineC('** KOPIA KAWIARNI **'));
+    push(line('** KOPIA KAWIARNI **'));
     push(SIZE_NORM);
     push(hr('='));
     push(blank());
@@ -1077,7 +1077,7 @@ function buildReceipt(o, copy){
 }
 
 async function buildReceiptClient(o){
-  const logoBytes=await loadLogoBytes('https://filemonkawiarnia.pl/logof1.png',512);
+  const logoBytes=await loadLogoBytes('https://filemonkawiarnia.pl/logof1.png',400);
   const bytes=[];
   const push=arr=>arr.forEach(b=>bytes.push(b));
   const extra=o.extraCharge||0;
