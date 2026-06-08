@@ -1125,17 +1125,17 @@ async function buildReceiptClient(o){
 
   push(ALIGN_L);
   push(BOLD_ON);push(line('ZAMOWIENIE:'));push(BOLD_OFF);
+  const isVoucher=o.paySummary.voucher;
   o.cakes.forEach(c=>{
-    const priceStr=c.price+' zl';
-    const nameMax=W-priceStr.length-1;
-    push(lineKV(c.name.substring(0,nameMax),priceStr));
+    if(isVoucher){ push(line(c.name.substring(0,W))); }
+    else{ const priceStr=c.price+' zl'; push(lineKV(c.name.substring(0,W-priceStr.length-1),priceStr)); }
   });
-  if(extra>0){
+  if(!isVoucher && extra>0){
     push(lineKV('Doplata za dodatki:',extra+' zl'));
   }
   push(hr());
   push(BOLD_ON);
-  push(lineKV('LACZNIE:',o.total+' zl'));
+  if(!isVoucher){ push(lineKV('LACZNIE:',o.total+' zl')); }
   push(BOLD_OFF);
 
   push(hr());
