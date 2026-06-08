@@ -364,6 +364,7 @@
       </div>
       <div class="cat-items">
         <label class="cake-item"><input type="checkbox" value="Beza pavlova" data-price="160"><span class="cake-name">Beza z owocami (Pavlova)</span><span class="cake-price">160 zł</span></label>
+        <label class="cake-item"><input type="checkbox" value="Mini bezy 12szt" data-price="160"><span class="cake-name">Mini bezy z owocami 12szt</span><span class="cake-price">160 zł</span></label>
         <label class="cake-item"><input type="checkbox" value="Beza dacquoise" data-price="165"><span class="cake-name">Beza dacquoise</span><span class="cake-price">165 zł</span></label>
         <label class="cake-item"><input type="checkbox" value="Beza szarlotka" data-price="165"><span class="cake-name">Beza szarlotka</span><span class="cake-price">165 zł</span></label>
         <label class="cake-item"><input type="checkbox" value="Beza jagodzianka" data-price="165"><span class="cake-name">Beza jagodzianka</span><span class="cake-price">165 zł</span></label>
@@ -410,7 +411,20 @@
         <label class="cake-item"><input type="checkbox" value="Sernik cynamonowo-miodowy" data-price="170"><span class="cake-name">Sernik cynamonowo-miodowy z pieczoną gruszką</span><span class="cake-price">170 zł</span></label>
       </div>
     </div>
-
+    
+<!-- PTYSIE -->
+<div class="category" id="cat-ptysie">
+  <div class="cat-header" onclick="toggleCat('cat-ptysie')">
+    <h3>Ptysie 12 sztuk</h3><span class="cat-count" id="cnt-ptysie"></span><span class="cat-arrow">&#9660;</span>
+  </div>
+  <div class="cat-items">
+    <label class="cake-item"><input type="checkbox" value="Ptysie mango-marakuja" data-price="160"><span class="cake-name">Ptysie mango-marakuja</span><span class="cake-price">160 zł</span></label>
+    <label class="cake-item"><input type="checkbox" value="Ptysie czekolada-wisnia" data-price="160"><span class="cake-name">Ptysie czekolada-wiśnia</span><span class="cake-price">160 zł</span></label>
+    <label class="cake-item"><input type="checkbox" value="Ptysie kinder czekolada" data-price="160"><span class="cake-name">Ptysie kinder czekolada</span><span class="cake-price">160 zł</span></label>
+    <label class="cake-item"><input type="checkbox" value="Ptysie smietanka-borowka" data-price="160"><span class="cake-name">Ptysie śmietanka-borówka</span><span class="cake-price">160 zł</span></label>
+  </div>
+</div>
+    
   </div><!-- /menu-col -->
 
   <!-- FORMULARZ -->
@@ -633,7 +647,7 @@ document.addEventListener('keydown',e=>{if(document.getElementById('pin-screen')
 const catMap = {
   'cat-serniki':'cnt-serniki','cat-tarty':'cnt-tarty','cat-brownie':'cnt-brownie',
   'cat-cookie':'cnt-cookie','cat-bezy':'cnt-bezy','cat-klas':'cnt-klas',
-  'cat-torty':'cnt-torty','cat-zimno':'cnt-zimno'
+  'cat-torty':'cnt-torty','cat-zimno':'cnt-zimno','cat-ptysie':'cnt-ptysie'
 };
 function toggleCat(id){document.getElementById(id).classList.toggle('open');}
 document.querySelectorAll('.cake-item input[type="checkbox"]').forEach(cb=>{
