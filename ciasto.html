@@ -856,7 +856,7 @@ async function submitOrder(){
     `<strong>Ciasta:</strong> ${cakeList}<br>`+
     (extraChargeVal>0?`<strong>Dopłata za dodatki:</strong> ${extraChargeVal} zł<br>`:'')+
     `<strong>Wartość łącznie:</strong> ${total} zł<br>`+
-    `<strong>Data przyjęcia:</strong> ${fmtDate(orderDate)}<br>`+
+    `<strong>Data przyjęcia:</strong> ${orderDate}<br>`+
     `<strong>Data odbioru:</strong> ${fmtDate(pickupDate)}, godz. ${time}<br>`+
     `<strong>Klient:</strong> ${name}, tel. ${phone}<br>`+
     `<strong>Przyjął/a:</strong> ${selectedStaff}<br>`+
