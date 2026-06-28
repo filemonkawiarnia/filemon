@@ -98,8 +98,7 @@
 <header>
   <div>
     <div class="header-text">
-      <h1>Filemon — Odpowiedź SMS</h1>
-      <p>Rezerwacja stolika</p>
+      <h1>Filemon</h1>
     </div>
   </div>
 </header>
@@ -117,7 +116,7 @@ const godz = p.get('godz') || '';
 const app = document.getElementById('app');
 
 if (!tel || !imie || !data || !godz) {
-  app.innerHTML = '<div class="error">Brak danych rezerwacji.<br>Użyj linku z maila.</div>';
+  app.innerHTML = '<div class="error">Brak danych.</div>';
 } else {
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const sep   = isIOS ? '&' : '?';
@@ -147,8 +146,7 @@ if (!tel || !imie || !data || !godz) {
       <div class="card">
         <div class="sms-bubble confirm">${txtConfirm}</div>
         <a class="sms-btn confirm" href="${smsConfirm}">✅ Otwórz SMS — Potwierdzenie</a>
-        <p class="tip">Otworzy aplikację SMS z gotową wiadomością</p>
-      </div>
+        </div>
     </div>
 
     <div class="section">
@@ -156,8 +154,7 @@ if (!tel || !imie || !data || !godz) {
       <div class="card">
         <div class="sms-bubble deny">${txtDeny}</div>
         <a class="sms-btn deny" href="${smsDeny}">❌ Otwórz SMS — Brak miejsc</a>
-        <p class="tip">Otworzy aplikację SMS z gotową wiadomością</p>
-      </div>
+        </div>
     </div>
   `;
 }
