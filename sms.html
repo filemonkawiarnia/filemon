@@ -123,10 +123,10 @@ if (!tel || !imie || !data || !godz) {
   const sep   = isIOS ? '&' : '?';
 
   const txtConfirm =
-`Cześć ${imie}! ✅ Rezerwacja potwierdzona! 🐈\n\n${data} o ${godz}\n\nDo zobaczenia przy kawie i mruczeniu naszych kotów! ☕🐱\n\nFilemon Kocia Kawiarnia`;
+`Cześć, ${imie}! \nRezerwacja potwierdzona! 🐈\n\n${data} o ${godz}\n\nDo zobaczenia przy kawie i mruczeniu naszych kotów! :)\n\nFilemon Kocia Kawiarnia`;
 
   const txtDeny =
-`Cześć ${imie}! Dziękujemy za zgłoszenie rezerwacji.\n\nNiestety w tym terminie (${data} o ${godz}) nie mamy już wolnych stolików.\n\nZapraszamy do rezerwacji na inny termin — chętnie znajdziemy dla Was miejsce 🐱\n\nFilemon Kocia Kawiarnia`;
+`Cześć, ${imie}! Dziękujemy za zgłoszenie rezerwacji.\nNiestety w tym terminie (${data} o ${godz}) nie mamy już wolnych stolików.\n\nZapraszamy do rezerwacji na inny termin - chętnie znajdziemy dla Was miejsce 🐱\n\nFilemon Kocia Kawiarnia`;
 
   const smsConfirm = `sms:${tel}${sep}body=${encodeURIComponent(txtConfirm)}`;
   const smsDeny    = `sms:${tel}${sep}body=${encodeURIComponent(txtDeny)}`;
