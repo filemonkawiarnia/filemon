@@ -126,7 +126,7 @@ if (!tel || !imie || !data || !godz) {
 `Cześć, ${imie}! \nRezerwacja potwierdzona! 🐈\n\n${data} o ${godz}\n\nDo zobaczenia przy kawie i mruczeniu naszych kotów! :)\n\nFilemon Kocia Kawiarnia`;
 
   const txtDeny =
-`Cześć, ${imie}! Dziękujemy za zgłoszenie rezerwacji.\nNiestety w tym terminie (${data} o ${godz}) nie mamy już wolnych stolików.\n\nZapraszamy do rezerwacji na inny termin - chętnie znajdziemy dla Was miejsce 🐱\n\nFilemon Kocia Kawiarnia`;
+`Cześć, ${imie}! Dziękujemy za zgłoszenie rezerwacji.\nNiestety w tym terminie (${data} o ${godz}) nie mamy już wolnych stolików.\n\nZadzwoń do nas lub wybierz inny termin.\n\nFilemon Kocia Kawiarnia`;
 
   const smsConfirm = `sms:${tel}${sep}body=${encodeURIComponent(txtConfirm)}`;
   const smsDeny    = `sms:${tel}${sep}body=${encodeURIComponent(txtDeny)}`;
