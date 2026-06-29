@@ -140,7 +140,21 @@
 <script>
 const p    = new URLSearchParams(location.search);
 const tel  = p.get('tel')  || '';
-const imie = (p.get('imie') || '').split(' ')[0]; // tylko imię, bez nazwiska
+// Usuwa polskie znaki (ą→a, ę→e, itd.)
+function bezOgonkow(str) {
+  return str
+    .replace(/ą/g,'a').replace(/Ą/g,'A')
+    .replace(/ć/g,'c').replace(/Ć/g,'C')
+    .replace(/ę/g,'e').replace(/Ę/g,'E')
+    .replace(/ł/g,'l').replace(/Ł/g,'L')
+    .replace(/ń/g,'n').replace(/Ń/g,'N')
+    .replace(/ó/g,'o').replace(/Ó/g,'O')
+    .replace(/ś/g,'s').replace(/Ś/g,'S')
+    .replace(/ź/g,'z').replace(/Ź/g,'Z')
+    .replace(/ż/g,'z').replace(/Ż/g,'Z');
+}
+
+const imie = bezOgonkow((p.get('imie') || '').split(' ')[0]);
 const dataRez = p.get('data') || '';
 const godz = p.get('godz') || '';
 
