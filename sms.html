@@ -171,11 +171,11 @@ function skrocData(d) {
 const dataKrotka = skrocData(dataRez);
 
 const txtConfirm = tel
-  ? `Cześć, ${imie}!\nRezerwacja potwierdzona!\n${dataKrotka} o ${godz}\nDo zobaczenia przy kawie i mruczeniu!\n\nFilemon Kocia Kawiarnia`
+  ? `Czesc, ${imie}!\nRezerwacja potwierdzona!\n${dataKrotka} o ${godz}\nDo zobaczenia przy kawie i mruczeniu!\n\nFilemon Kocia Kawiarnia`
   : '';
 
 const txtDeny = tel
-  ? `Cześć, ${imie}!\nNiestety ${dataKrotka} o ${godz} nie mamy wolnych stolików.\nZadzwoń do nas lub wybierz inny termin.\n\nFilemon Kocia Kawiarnia`
+  ? `Czesc, ${imie}!\nNiestety ${dataKrotka} o ${godz} nie mamy wolnych stolikow.\nZadzwon do nas lub wybierz inny termin.\n\nFilemon Kocia Kawiarnia`
   : '';
 
 async function wyslijSMS(tresc, typ) {
