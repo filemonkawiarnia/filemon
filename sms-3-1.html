@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Filemon</title>
+<style>
+  :root {
+    --navy:   #2C3E6A;
+    --green:  #1DB96A;
+    --red:    #E84040;
+    --bg:     #F0EDF8;
+    --card:   #FFFFFF;
+    --text:   #1B2A4A;
+    --muted:  #7A8AAA;
+    --border: rgba(27,42,74,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+  header {
+    background: var(--navy);
+    padding: 1.2rem 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .header-text h1 { color:#fff; font-size:1.05rem; font-weight:700; }
+  .header-text p  { color:rgba(255,255,255,0.5); font-size:0.72rem; margin-top:0.1rem; text-transform:uppercase; letter-spacing:0.08em; }
+
+  .section { margin: 1.2rem 1rem 0; }
+  .section-label {
+    font-size: 0.7rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--muted); margin-bottom:0.6rem;
+  }
+  .card {
+    background: var(--card); border-radius:16px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 2px 12px rgba(27,42,74,0.08);
+  }
+  .info-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size:0.9rem;
+  }
+  .info-row:last-child { border-bottom:none; }
+  .info-label { color:var(--muted); font-size:0.78rem; }
+  .info-value { font-weight:600; text-align:right; }
+
+  .sms-bubble {
+    background: #e5e5ea;
+    border-radius: 16px 16px 4px 16px;
+    padding: 0.9rem 1rem;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: #1c1c1e;
+    white-space: pre-wrap;
+    word-break: break-word;
+    user-select: all;
+    -webkit-user-select: all;
+  }
+  .sms-bubble.confirm { background: #d1f2e0; }
+  .sms-bubble.deny    { background: #fde8e8; }
+
+  .sms-btn {
+    display: flex; align-items:center; justify-content:center; gap:0.5rem;
+    width: 100%; margin-top: 0.65rem;
+    padding: 0.85rem; border:none; border-radius:12px;
+    font-size: 0.95rem; font-weight:700; cursor:pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    font-family: inherit; text-decoration:none; color:#fff;
+  }
+  .sms-btn:active { transform:scale(0.97); opacity:0.85; }
+  .sms-btn.confirm { background: var(--green); }
+  .sms-btn.deny    { background: var(--red); }
+
+  .copied-toast {
+    position:fixed; bottom:1.5rem; left:50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--navy); color:#fff;
+    padding: 0.6rem 1.4rem; border-radius:30px;
+    font-size:0.85rem; font-weight:600;
+    opacity:0; pointer-events:none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index:100; white-space:nowrap;
+  }
+  .copied-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+  .tip { font-size:0.7rem; color:var(--muted); text-align:center; margin-top:0.4rem; }
+  .error { text-align:center; padding:3rem 1rem; color:var(--muted); }
+
+  .popup-overlay {
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,0.45); z-index:200;
+    align-items:center; justify-content:center;
+  }
+  .popup-overlay.show { display:flex; }
+  .popup-box {
+    background:#fff; border-radius:20px;
+    padding:2rem 1.5rem; margin:1.5rem;
+    text-align:center; max-width:320px; width:100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .popup-icon { font-size:3rem; margin-bottom:0.5rem; }
+  .popup-title { font-size:1.15rem; font-weight:700; margin-bottom:0.4rem; }
+  .popup-desc { font-size:0.88rem; color:var(--muted); margin-bottom:1.2rem; line-height:1.5; }
+  .popup-close {
+    background:var(--navy); color:#fff; border:none;
+    padding:0.75rem 2rem; border-radius:12px;
+    font-size:0.95rem; font-weight:700; cursor:pointer;
+    font-family:inherit; width:100%;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-text">
+      <h1>Filemon</h1>
+    </div>
+  </div>
+</header>
+
+<div id="app"></div>
+<div class="copied-toast" id="toast">✓ Skopiowano!</div>
+
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="popup-icon" id="popup-icon">✅</div>
+    <div class="popup-title" id="popup-title">SMS wysłany!</div>
+    <div class="popup-desc" id="popup-desc"></div>
+    <button class="popup-close" onclick="document.getElementById('popup').classList.remove('show')">OK</button>
+  </div>
+</div>
+
+<script>
+const p    = new URLSearchParams(location.search);
+const tel  = p.get('tel')  || '';
+const imie = (p.get('imie') || '').split(' ')[0]; // tylko imię, bez nazwiska
+const dataRez = p.get('data') || '';
+const godz = p.get('godz') || '';
+
+const SMSAPI_TOKEN  = 'l50OnvURxYvcbkIY2wjtGUQsWSRXUW6bXOniySO6';
+const SMSAPI_SENDER = 'Filemon';
+
+// Skraca datę z "29 czerwca (poniedziałek)" → "29-06 (pon)"
+function skrocData(d) {
+  const miesiaceMapa = {
+    'stycznia':1,'lutego':2,'marca':3,'kwietnia':4,'maja':5,'czerwca':6,
+    'lipca':7,'sierpnia':8,'września':9,'października':10,'listopada':11,'grudnia':12
+  };
+  const dniMapa = {
+    'poniedziałek':'pon','wtorek':'wt','środa':'śr','czwartek':'czw',
+    'piątek':'pt','sobota':'sob','niedziela':'nd'
+  };
+  // Format: "29 czerwca (poniedziałek)"
+  const m = d.match(/(\d+)\s+(\S+)\s*\((\S+)\)/);
+  if (m) {
+    const dzien = m[1].padStart(2,'0');
+    const mies  = String(miesiaceMapa[m[2].toLowerCase()] || m[2]).padStart(2,'0');
+    const dz    = dniMapa[m[3].toLowerCase()] || m[3];
+    return `${dzien}-${mies} (${dz})`;
+  }
+  return d; // jeśli format nieznany — zostaw bez zmian
+}
+
+const dataKrotka = skrocData(dataRez);
+
+const txtConfirm = tel
+  ? `Cześć, ${imie}! Rezerwacja potwierdzona!\n${dataKrotka} o ${godz}\nDo zobaczenia!\nFilemon Kocia Kawiarnia`
+  : '';
+
+const txtDeny = tel
+  ? `Cześć, ${imie}! Niestety ${dataKrotka} o ${godz} nie mamy wolnych stolików.\nZadzwoń lub wybierz inny termin.\nFilemon Kocia Kawiarnia`
+  : '';
+
+async function wyslijSMS(tresc, typ) {
+  const btn = document.getElementById('btn-' + typ);
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Wysyłanie...';
+
+  try {
+    const res = await fetch('https://api.smsapi.pl/sms.do', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + SMSAPI_TOKEN,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        to:      tel,
+        message: tresc,
+        from:    SMSAPI_SENDER,
+        format:  'json',
+      })
+    });
+
+    const resp = await res.json();
+
+    if (resp.count && resp.count > 0) {
+      btn.textContent = '✓ Wysłano!';
+      btn.style.background = '#1DB96A';
+      const other = typ === 'confirm' ? 'deny' : 'confirm';
+      const otherBtn = document.getElementById('btn-' + other);
+      if (otherBtn) { otherBtn.disabled = true; otherBtn.style.opacity = '0.4'; }
+      const isConfirm = typ === 'confirm';
+      document.getElementById('popup-icon').textContent  = isConfirm ? '✅' : '❌';
+      document.getElementById('popup-title').textContent = 'SMS wysłany!';
+      document.getElementById('popup-desc').textContent  = isConfirm
+        ? 'Potwierdzenie rezerwacji zostało wysłane do ' + imie + '.'
+        : 'Informacja o braku miejsc została wysłana do ' + imie + '.';
+      document.getElementById('popup').classList.add('show');
+    } else {
+      throw new Error(JSON.stringify(resp));
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = originalText;
+    document.getElementById('popup-icon').textContent  = '⚠️';
+    document.getElementById('popup-title').textContent = 'Błąd wysyłki';
+    document.getElementById('popup-desc').textContent  = 'Nie udało się wysłać SMS. Spróbuj ponownie.\n\n' + e.message;
+    document.getElementById('popup').classList.add('show');
+  }
+}
+
+const app = document.getElementById('app');
+
+if (!tel || !imie || !dataRez || !godz) {
+  app.innerHTML = '<div class="error">Brak danych.</div>';
+} else {
+  app.innerHTML = `
+    <div class="section">
+      <div class="section-label">Dane rezerwacji</div>
+      <div class="card">
+        <div class="info-row"><span class="info-label">Gość</span><span class="info-value">${imie}</span></div>
+        <div class="info-row"><span class="info-label">Telefon</span><span class="info-value">+${tel}</span></div>
+        <div class="info-row"><span class="info-label">Data</span><span class="info-value">${dataRez}</span></div>
+        <div class="info-row"><span class="info-label">Godzina</span><span class="info-value">${godz}</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">✅ Potwierdzenie</div>
+      <div class="card">
+        <div class="sms-bubble confirm">${txtConfirm}</div>
+        <button id="btn-confirm" class="sms-btn confirm" onclick="wyslijSMS(txtConfirm, 'confirm')">✅ Wyślij SMS — Potwierdzenie</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">❌ Brak miejsc</div>
+      <div class="card">
+        <div class="sms-bubble deny">${txtDeny}</div>
+        <button id="btn-deny" class="sms-btn deny" onclick="wyslijSMS(txtDeny, 'deny')">❌ Wyślij SMS — Brak miejsc</button>
+      </div>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
