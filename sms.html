@@ -255,7 +255,8 @@ const txtDeny = tel
   ? `Czesc, ${imie}!\n\nNiestety ${dataKrotka} o ${godz} nie mamy wolnych stolikow.\nZadzwon do nas lub wybierz inny termin.\n\nFilemon Kocia Kawiarnia`
   : '';
 
-async function wyslijSMS(tresc, typ) {
+window.wyslijSMS = async function(typ) {
+  const tresc = typ === 'confirm' ? txtConfirm : txtDeny;
   const btn = document.getElementById('btn-' + typ);
   const originalText = btn.textContent;
   btn.disabled = true;
@@ -335,7 +336,7 @@ if (!tel || !imie || !dataRez || !godz) {
       <div class="section-label">✅ Potwierdzenie</div>
       <div class="card">
         <div class="sms-bubble confirm">${txtConfirm}</div>
-        <button id="btn-confirm" class="sms-btn confirm" onclick="wyslijSMS(txtConfirm, 'confirm')">✅ Wyślij SMS — Potwierdzenie</button>
+        <button id="btn-confirm" class="sms-btn confirm" onclick="wyslijSMS('confirm')">✅ Wyślij SMS — Potwierdzenie</button>
       </div>
     </div>
 
@@ -343,7 +344,7 @@ if (!tel || !imie || !dataRez || !godz) {
       <div class="section-label">❌ Brak miejsc</div>
       <div class="card">
         <div class="sms-bubble deny">${txtDeny}</div>
-        <button id="btn-deny" class="sms-btn deny" onclick="wyslijSMS(txtDeny, 'deny')">❌ Wyślij SMS — Brak miejsc</button>
+        <button id="btn-deny" class="sms-btn deny" onclick="wyslijSMS('deny')">❌ Wyślij SMS — Brak miejsc</button>
       </div>
     </div>
   `;
