@@ -198,7 +198,9 @@ async function upsertClient(name, phone) {
 }
 
 async function dodajRezerwacjeDoBazy() {
-  if (!dataISO || !godz || !imiePelne) return false;
+  if (!dataISO || !godz || !imiePelne) {
+    return { ok:false, reason: `Brak danych w linku (dataISO="${dataISO}", godz="${godz}", imie="${imiePelne}")` };
+  }
   try {
     const id = uid();
     await setDoc(doc(db, 'reservations', id), {
@@ -214,10 +216,10 @@ async function dodajRezerwacjeDoBazy() {
       noShow: false
     });
     await upsertClient(imiePelne, tel);
-    return true;
+    return { ok:true };
   } catch(e) {
     console.error('Błąd zapisu rezerwacji do Firestore:', e);
-    return false;
+    return { ok:false, reason: (e && (e.code || e.message)) ? `${e.code || ''} ${e.message || e}`.trim() : String(e) };
   }
 }
 
@@ -232,7 +234,7 @@ function skrocData(d) {
   };
   const dniMapa = {
     'poniedziałek':'pon','wtorek':'wt','środa':'sro','czwartek':'czw',
-    'piątek':'pt','sobota':'sob','niedziela':'ndz'
+    'piątek':'pt','sobota':'sob','niedziela':'nd'
   };
   // Format: "29 czerwca (poniedziałek)"
   const m = d.match(/(\d+)\s+(\S+)\s*\((\S+)\)/);
@@ -286,7 +288,7 @@ window.wyslijSMS = async function(typ) {
       if (otherBtn) { otherBtn.disabled = true; otherBtn.style.opacity = '0.4'; }
       const isConfirm = typ === 'confirm';
 
-      let zapisanoRezerwacje = false;
+      let zapisanoRezerwacje = { ok:false };
       if (isConfirm) {
         zapisanoRezerwacje = await dodajRezerwacjeDoBazy();
       }
@@ -297,9 +299,9 @@ window.wyslijSMS = async function(typ) {
         ? 'Potwierdzenie rezerwacji zostało wysłane do ' + imie + '.'
         : 'Informacja o braku miejsc została wysłana do ' + imie + '.';
       if (isConfirm) {
-        opis += zapisanoRezerwacje
+        opis += zapisanoRezerwacje.ok
           ? '\n\nRezerwacja została automatycznie dodana do grafiku.'
-          : '\n\n⚠️ Nie udało się automatycznie dodać rezerwacji do grafiku — dodaj ją ręcznie.';
+          : '\n\n⚠️ Nie udało się automatycznie dodać rezerwacji do grafiku — dodaj ją ręcznie.\n\nSzczegóły błędu: ' + zapisanoRezerwacje.reason;
       }
       document.getElementById('popup-desc').textContent = opis;
       document.getElementById('popup').classList.add('show');
