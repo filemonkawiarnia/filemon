@@ -781,7 +781,7 @@ const P_BOLD_ON=[ESC,0x45,0x01];
 const P_BOLD_OFF=[ESC,0x45,0x00];
 const P_ALIGN_C=[ESC,0x61,0x01];
 const P_SIZE_BIG=[GS,0x21,0x33];
-const P_SIZE_NORM=[GS,0x21,0x00];
+const P_SIZE_NORM=[GS,0x21,0x11];
 const P_CUT=[GS,0x56,0x42,0x05];
 const P_LF=[0x0A];
 const P_W=48;
@@ -813,8 +813,8 @@ function buildTableCardEscPos(name,time){
   push(P_ALIGN_C);
   push([ESC,0x64,19]);              // ESC d 19 — ok. 7cm pustego miejsca
   push(P_SIZE_BIG);
-  push(p_line(name));
   push(P_BOLD_ON);
+  push(p_line(name));
   push(P_SIZE_NORM);
   push(p_line(time));
   push(P_BOLD_OFF);
