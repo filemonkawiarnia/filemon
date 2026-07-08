@@ -813,10 +813,10 @@ function buildTableCardEscPos(name,time){
   push(P_ALIGN_C);
   push([ESC,0x64,19]);              // ESC d 19 — ok. 7cm pustego miejsca
   push(P_SIZE_BIG);
-  push(P_BOLD_ON);
   push(p_line(name));
+  push(P_BOLD_ON);
   push(P_SIZE_NORM);
-  push(p_ine(time));
+  push(p_line(time));
   push(P_BOLD_OFF);
   push([ESC,0x64,13]);              // dosuwa do ok. 14cm łącznie
   push(P_CUT);
