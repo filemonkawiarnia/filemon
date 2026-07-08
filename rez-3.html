@@ -818,7 +818,7 @@ function buildTableCardEscPos(name,time){
   push(P_SIZE_NORM);
   push(p_line(time));
   push(P_BOLD_OFF);
-  push([ESC,0x64,13]);              // dosuwa do ok. 14cm łącznie
+  push([ESC,0x64,4]);              // dosuwa do ok. 14cm łącznie
   push(P_CUT);
   return new Uint8Array(bytes);
 }
