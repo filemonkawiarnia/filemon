@@ -862,7 +862,7 @@ async function wyslijSmsPotwierdzenie(){
   const imie=bezOgonkow((lastOrder.clientName||'').trim().split(/\s+/)[0]||'');
   const dataOdb=bezOgonkow(fmtDate(lastOrder.pickupDate));
   const godz=lastOrder.pickupTime;
-  const tresc=`Czesc, ${imie}! \n\nTwoje zamowienie ciasta potwierdzone. \nOdbior: ${dataOdb}, od godz. ${godz}. \n\nFilemon Kocia Kawiarnia.`;
+  const tresc=`Czesc, ${imie}! \n\nZamowienie potwierdzone! \nCiasto bedzie gotowe do odbioru: ${dataOdb}, od godz. ${godz}. \n\nFilemon Kocia Kawiarnia.`;
   const to=phoneToSmsFormat(lastOrder.phone);
 
   try{
