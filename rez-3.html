@@ -50,6 +50,7 @@ header{background:var(--navy);padding:0.9rem 1rem;display:flex;align-items:cente
 .res-chip{display:inline-flex;align-items:center;background:var(--navy);color:#fff;border-radius:8px;padding:0.28rem 0.55rem;font-size:0.82rem;font-weight:700;cursor:pointer;user-select:none;line-height:1.2;transition:opacity 0.1s}
 .res-chip:active{opacity:0.7}
 .res-chip.no-show{background:#aaa;text-decoration:line-through;opacity:0.6}
+.res-chip.arrived{box-shadow:0 0 0 2px var(--green) inset}
 .slot-warn{font-size:0.85rem;padding-top:0.1rem}
 .slot-add{background:none;border:1.5px dashed var(--border);color:var(--muted);border-radius:8px;padding:0.26rem 0.5rem;font-size:0.8rem;cursor:pointer}
 .slot-add:active{border-color:var(--navy);color:var(--navy)}
@@ -108,10 +109,13 @@ header{background:var(--navy);padding:0.9rem 1rem;display:flex;align-items:cente
 /* BUTTONS */
 .btn-primary{width:100%;padding:0.85rem;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;margin-top:0.5rem}
 .btn-primary:active{opacity:0.8}
+.det-actions{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:1rem}
+.det-actions .btn-primary{margin-top:0;font-size:0.85rem;padding:0.75rem 0.4rem}
 .btn-danger{background:var(--red)}
 .btn-ghost{background:none;border:1.5px solid var(--border);color:var(--text)}
 .btn-ghost:active{background:var(--bg)}
 .btn-warn{background:#d97706}
+.btn-success{background:var(--green)}
 
 /* DETAIL */
 .detail-name{font-size:1.2rem;font-weight:800;margin-bottom:0.1rem}
@@ -126,12 +130,23 @@ header{background:var(--navy);padding:0.9rem 1rem;display:flex;align-items:cente
 .history-item.ns{color:var(--red)}
 
 /* CLIENTS */
-.client-item{background:#fff;border-radius:12px;padding:0.8rem 1rem;margin-bottom:0.55rem;box-shadow:0 1px 6px rgba(27,42,74,0.07);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.client-item{background:#fff;border-radius:12px;padding:0.8rem 1rem;margin-bottom:0.55rem;box-shadow:0 1px 6px rgba(27,42,74,0.07);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.15s}
 .client-item:active{opacity:0.7}
+.client-item.ns-yellow{background:#FFF1C2}
+.client-item.ns-red{background:#F9D2D2}
 .client-name{font-weight:700;font-size:0.93rem}
 .client-sub{font-size:0.76rem;color:var(--muted);margin-top:0.1rem}
 .client-stats{text-align:right;font-size:0.76rem;color:var(--muted)}
 .client-stats .ns{color:var(--red);font-weight:700}
+
+/* CLIENTS FILTER BAR */
+.clients-filter{padding:0.2rem 0.75rem 0.7rem;display:flex;flex-direction:column;gap:0.5rem}
+.cf-row{display:flex;gap:0.5rem}
+.cf-btn{flex:1;padding:0.5rem 0.4rem;border:1.5px solid var(--border);border-radius:10px;background:#fff;font-size:0.78rem;font-weight:700;color:var(--text);cursor:pointer;font-family:inherit;text-align:center}
+.cf-btn:active{background:var(--bg)}
+.cf-btn.active{border-color:var(--navy);background:var(--navy);color:#fff}
+.cf-check{display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;color:var(--text);user-select:none}
+.cf-check input{width:1.05rem;height:1.05rem;accent-color:var(--navy)}
 
 /* MISC */
 .section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);padding:0.8rem 1rem 0.3rem}
@@ -225,6 +240,13 @@ header{background:var(--navy);padding:0.9rem 1rem;display:flex;align-items:cente
 
 <div id="tab-clients" class="tab-content">
   <div class="section-label">Baza klientów</div>
+  <div class="clients-filter">
+    <div class="cf-row">
+      <button class="cf-btn active" id="cf-sort-noshow" onclick="setClientSort('noshow')">Nieobecności ↓</button>
+      <button class="cf-btn" id="cf-sort-alpha" onclick="setClientSort('alpha')">A-Z</button>
+    </div>
+    <label class="cf-check"><input type="checkbox" id="cf-only-noshow" onchange="renderClients()"> Pokaż tylko z nieobecnościami</label>
+  </div>
   <div style="padding:0 0.75rem" id="clients-list"></div>
 </div>
 
@@ -363,6 +385,7 @@ let calYear = initCalDate.getFullYear();
 let calMonth = initCalDate.getMonth(); // 0-based
 let unsubMonth = null;
 let monthResDates = new Set();
+let monthDayInfo = {};
 
 function updateUserBadge(){
   const el = document.getElementById('user-badge');
@@ -412,7 +435,14 @@ function subscribeMonth(year,month){
   const q=query(collection(db,'reservations'),where('date','>=',start),where('date','<=',end));
   unsubMonth=onSnapshot(q, snap=>{
     monthResDates=new Set();
-    snap.forEach(d=>monthResDates.add(d.data().date));
+    monthDayInfo={};
+    snap.forEach(d=>{
+      const data=d.data();
+      monthResDates.add(data.date);
+      if(!monthDayInfo[data.date])monthDayInfo[data.date]={total:0,resolved:0};
+      monthDayInfo[data.date].total++;
+      if(data.arrived||data.noShow)monthDayInfo[data.date].resolved++;
+    });
     renderCalendar();
   });
 }
@@ -423,6 +453,23 @@ subscribeDay(currentDate);
 subscribeMonth(calYear,calMonth);
 updateDayHeader();
 renderCalendar();
+autoResolvePastReservations();
+
+// Domyślnie po zakończeniu dnia nierozstrzygnięte rezerwacje (bez potwierdzenia
+// przybycia i bez oznaczenia nieobecności) są automatycznie liczone jako obecność.
+async function autoResolvePastReservations(){
+  try{
+    const today=todayStr();
+    const q=query(collection(db,'reservations'),where('date','<',today));
+    const snap=await getDocs(q);
+    const toFix=[];
+    snap.forEach(d=>{
+      const data=d.data();
+      if(!data.arrived&&!data.noShow)toFix.push(d.ref);
+    });
+    for(const ref of toFix){await updateDoc(ref,{arrived:true});}
+  }catch(e){/* brak połączenia lub uprawnień — spróbuje przy kolejnym starcie */}
+}
 
 // ─── HELPERS ───
 function fmtDateLabel(str){
@@ -476,7 +523,9 @@ function renderCalendar(){
     const isToday=dStr===todayS;
     const hasRes=monthResDates.has(dStr);
     const isPast=dStr<todayS;
-    html+=`<div class="cal-day${inMonth?'':' other-month'}${isToday?' today':''}${hasRes?' has-res':''}${hasRes&&isPast?' past-day':''}" onclick="selectCalendarDay('${dStr}')">
+    const info=monthDayInfo[dStr];
+    const allResolved=hasRes&&info&&info.total>0&&info.resolved===info.total;
+    html+=`<div class="cal-day${inMonth?'':' other-month'}${isToday?' today':''}${hasRes?' has-res':''}${hasRes&&(isPast||allResolved)?' past-day':''}" onclick="selectCalendarDay('${dStr}')">
       <span class="cal-day-num">${cellDate.getDate()}</span>
     </div>`;
   }
@@ -507,7 +556,7 @@ function renderDay(){
     let warn='';
     if(kids>=KIDS_RED)warn='<span class="slot-warn">🔴</span>';
     else if(kids>=KIDS_WARN)warn='<span class="slot-warn">⚠️</span>';
-    const chips=hrRes.map(r=>`<span class="res-chip${r.noShow?' no-show':''}" onclick="openDetail('${r.id}')">${r.adults}+${r.kids}</span>`).join('');
+    const chips=hrRes.map(r=>`<span class="res-chip${r.noShow?' no-show':r.arrived?' arrived':''}" onclick="openDetail('${r.id}')">${r.adults}+${r.kids}</span>`).join('');
     return `<div class="slot">
       <div class="slot-time" onclick="openAddAtTime('${h}')">${h}</div>
       ${warn}
@@ -692,7 +741,7 @@ window.saveReservation=async function(){
       await updateDoc(doc(db,'reservations',editId),{name,adults:vAdults,kids:vKids,phone,table,notes});
     } else {
       const id=uid();
-      await setDoc(doc(db,'reservations',id),{id,date,time:selTime,name,adults:vAdults,kids:vKids,phone,table,notes,noShow:false,addedBy:currentUserName||''});
+      await setDoc(doc(db,'reservations',id),{id,date,time:selTime,name,adults:vAdults,kids:vKids,phone,table,notes,noShow:false,arrived:false,addedBy:currentUserName||''});
       await upsertClient(name,phone);
     }
     setSyncState('ok');
@@ -734,11 +783,14 @@ window.openDetail=function(id){
     ${r.notes?`<div class="detail-row"><span class="detail-label">Uwagi</span><span class="detail-value">${r.notes}</span></div>`:''}
     ${nsCount>0?`<div class="detail-row"><span class="detail-label">Nieobecności klienta</span><span class="detail-value"><span class="badge-ns">⚠️ ${nsCount}</span></span></div>`:''}
     ${r.addedBy?`<div class="detail-row"><span class="detail-label">Przyjął/-ęła</span><span class="detail-value">${r.addedBy}</span></div>`:''}
-    <button class="btn-primary" onclick="editRes('${id}')" style="margin-top:1rem">Edytuj</button>
-    <button class="btn-primary ${r.noShow?'':' btn-warn'}" onclick="toggleNoShow('${id}')" style="margin-top:0.5rem">${r.noShow?'Cofnij nieobecność':'Oznacz nieobecność'}</button>
-    <button class="btn-primary btn-danger" onclick="deleteRes('${id}')" style="margin-top:0.5rem">Usuń rezerwację</button>
-    <button class="btn-primary btn-ghost" onclick="printTableCard('${id}')" style="margin-top:0.5rem">🖨️ Drukuj</button>
-    <button class="btn-primary btn-ghost" onclick="closeOverlay('det-overlay')" style="margin-top:0.5rem">Zamknij</button>
+    <div class="det-actions">
+      <button class="btn-primary" onclick="editRes('${id}')">Edytuj</button>
+      <button class="btn-primary ${r.arrived?' btn-ghost':' btn-success'}" onclick="toggleArrived('${id}')">${r.arrived?'✅ Cofnij przybycie':'Potwierdź przybycie'}</button>
+      <button class="btn-primary ${r.noShow?'':' btn-warn'}" onclick="toggleNoShow('${id}')">${r.noShow?'Cofnij nieobecność':'Oznacz nieobecność'}</button>
+      <button class="btn-primary btn-danger" onclick="deleteRes('${id}')">Usuń rezerwację</button>
+      <button class="btn-primary btn-ghost" onclick="printTableCard('${id}')">🖨️ Drukuj</button>
+      <button class="btn-primary btn-ghost" onclick="closeOverlay('det-overlay')">Zamknij</button>
+    </div>
   `;
   document.getElementById('det-overlay').classList.add('show');
 };
@@ -760,12 +812,32 @@ window.editRes=function(id){
   document.getElementById('add-overlay').classList.add('show');
 };
 
+window.toggleArrived=async function(id){
+  const r=dayReservations[id];if(!r)return;
+  const newVal=!r.arrived;
+  setSyncState('syncing');
+  try{
+    const patch={arrived:newVal};
+    if(newVal&&r.noShow){
+      patch.noShow=false;
+      const c=Object.values(allClients).find(x=>x.name===r.name||(r.phone&&x.phone===r.phone));
+      if(c){await updateDoc(doc(db,'clients',c.id),{noShows:Math.max(0,(c.noShows||0)-1)});}
+    }
+    await updateDoc(doc(db,'reservations',id),patch);
+    setSyncState('ok');
+    closeOverlay('det-overlay');
+    toast(newVal?'Potwierdzono przybycie ✅':'Cofnięto potwierdzenie przybycia');
+  }catch{setSyncState('error');}
+};
+
 window.toggleNoShow=async function(id){
   const r=dayReservations[id];if(!r)return;
   const newVal=!r.noShow;
   setSyncState('syncing');
   try{
-    await updateDoc(doc(db,'reservations',id),{noShow:newVal});
+    const patch={noShow:newVal};
+    if(newVal&&r.arrived)patch.arrived=false;
+    await updateDoc(doc(db,'reservations',id),patch);
     const c=Object.values(allClients).find(x=>x.name===r.name||(r.phone&&x.phone===r.phone));
     if(c){await updateDoc(doc(db,'clients',c.id),{noShows:Math.max(0,(c.noShows||0)+(newVal?1:-1))});}
     setSyncState('ok');
@@ -799,6 +871,9 @@ function p_encPC437(str){
   }
   return bytes;
 }
+function p_firstName(fullName){
+  return (fullName||'').trim().split(/\s+/)[0]||'';
+}
 function p_line(text){return [...p_encPC437(text.substring(0,P_W)),...P_LF];}
 function p_lineC(text){
   const pad=Math.max(0,Math.floor((P_W-text.length)/2));
@@ -816,7 +891,7 @@ function buildTableCardEscPos(name,time){
   push([ESC,0x64,12]);              // ESC d 19 — ok. 7cm pustego miejsca
   push(P_SIZE_BIG);
   push(P_BOLD_ON);
-  push(p_line(name));
+  push(p_line(p_firstName(name)));
   push(P_SIZE_NORM);
   push(p_line(time));
   push(P_BOLD_OFF);
@@ -866,17 +941,35 @@ window.deleteRes=async function(id){
 };
 
 // ─── CLIENTS ───
+let clientSort='noshow';
+window.setClientSort=function(s){
+  clientSort=s;
+  document.getElementById('cf-sort-noshow').classList.toggle('active',s==='noshow');
+  document.getElementById('cf-sort-alpha').classList.toggle('active',s==='alpha');
+  renderClients();
+};
 function renderClients(){
-  const list=Object.values(allClients).sort((a,b)=>(b.reservations||0)-(a.reservations||0));
-  if(!list.length){document.getElementById('clients-list').innerHTML='<div class="empty-day">Brak klientów w bazie</div>';return;}
-  document.getElementById('clients-list').innerHTML=list.map(c=>`
-    <div class="client-item" onclick="openClient('${c.id}')">
+  let list=Object.values(allClients);
+  const onlyNs=document.getElementById('cf-only-noshow')?.checked;
+  if(onlyNs)list=list.filter(c=>(c.noShows||0)>0);
+  if(clientSort==='alpha'){
+    list.sort((a,b)=>(a.name||'').localeCompare(b.name||'','pl'));
+  } else {
+    list.sort((a,b)=>(b.noShows||0)-(a.noShows||0)||(a.name||'').localeCompare(b.name||'','pl'));
+  }
+  if(!list.length){document.getElementById('clients-list').innerHTML='<div class="empty-day">Brak klientów spełniających kryteria</div>';return;}
+  document.getElementById('clients-list').innerHTML=list.map(c=>{
+    const ns=c.noShows||0;
+    const colorClass=ns>=3?' ns-red':ns===2?' ns-yellow':'';
+    return `
+    <div class="client-item${colorClass}" onclick="openClient('${c.id}')">
       <div>
         <div class="client-name">${c.name}</div>
         <div class="client-sub">${c.phone||'brak telefonu'}</div>
       </div>
-      <div class="client-stats">rez: ${c.reservations||0}${c.noShows>0?`<br><span class="ns">nb: ${c.noShows}</span>`:''}</div>
-    </div>`).join('');
+      <div class="client-stats">rez: ${c.reservations||0}${ns>0?`<br><span class="ns">nb: ${ns}</span>`:''}</div>
+    </div>`;
+  }).join('');
 }
 
 window.openClient=function(id){
