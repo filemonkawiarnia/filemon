@@ -267,7 +267,7 @@ function zablokujWyslijPoWyslaniu(dane) {
   document.getElementById('popup-desc').textContent  =
     `Wiadomość "${dane.typ === 'confirm' ? 'Potwierdzenie' : 'Brak miejsc'}" została już wysłana dla tej rezerwacji`
     + (kiedyPopup ? ` — ${kiedyPopup}` : '')
-    + `.\n\nZe względu na bezpieczeństwo wysyłka z tego linku jest teraz zablokowana na wszystkich urządzeniach.`;
+    + `.\n\nNie wysyłaj sms-a jeszcze raz.`;
   document.getElementById('popup').classList.add('show');
 }
 
