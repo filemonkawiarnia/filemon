@@ -265,8 +265,8 @@ function zablokujWyslijPoWyslaniu(dane) {
   document.getElementById('popup-icon').textContent  = '⚠️';
   document.getElementById('popup-title').textContent = 'SMS już wysłany';
   document.getElementById('popup-desc').textContent  =
-    `Wiadomość "${dane.typ === 'confirm' ? 'Potwierdzenie' : 'Brak miejsc'}" została już wysłana dla tej rezerwacji`
-    + (kiedyPopup ? ` — ${kiedyPopup}` : '')
+    `Wiadomość "${dane.typ === 'confirm' ? 'Potwierdzenie' : 'Brak miejsc'}" została już wysłana`
+    + (kiedyPopup ? ` - ${kiedyPopup}` : '')
     + `.\n\nNie wysyłaj sms-a ponownie.`;
   document.getElementById('popup').classList.add('show');
 }
