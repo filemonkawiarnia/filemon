@@ -542,7 +542,7 @@
           <div class="payment-tabs">
           <button type="button" class="pay-tab" onclick="selectPay('full', this)">Zapłacono</button>
           <button type="button" class="pay-tab" onclick="selectPay('defer', this)">Do zapłaty przy odbiorze</button>
-          <button type="button" class="pay-tab" onclick="selectPay('amt', this)">Zadatek kwotowo</button>
+          <button type="button" class="pay-tab" onclick="selectPay('pct', this)">Zadatek procentowy</button>
           <button type="button" class="pay-tab" onclick="selectPay('voucher', this)">Voucher / Licytacja</button>  
           </div>
           <div class="err-msg" id="payErr">Proszę wybrać formę płatności.</div>
@@ -565,17 +565,17 @@
         </div>
 
 
-        <!-- Panel: Zadatek kwotowo -->
-        <div class="pay-panel" id="panel-amt">
+        <!-- Panel: Zadatek procentowy -->
+        <div class="pay-panel" id="panel-pct">
           <div class="deposit-row">
             <div class="field-group">
-              <label>Kwota zadatku (zł)</label>
-              <input type="number" id="dep-amt" min="1" placeholder="np. 50" oninput="calcDeposit()">
+              <label>Procent zadatku (%)</label>
+              <input type="number" id="dep-pct" min="1" max="100" step="1" value="30" oninput="updatePayCalc()">
             </div>
           </div>
           <div class="pay-result-box">
-            <div><div class="pr-label">Zadatek</div><div class="pr-val" id="amt-dep-val">—</div></div>
-            <div><div class="pr-label">Pozostało</div><div class="pr-rest" id="amt-rest-val">—</div></div>
+            <div><div class="pr-label">Zadatek</div><div class="pr-val" id="pct-dep-val">—</div></div>
+            <div><div class="pr-label">Pozostało</div><div class="pr-rest" id="pct-rest-val">—</div></div>
           </div>
         </div>
 
@@ -779,7 +779,7 @@ function selectPay(type, btn){
   selectedPay=type;
   document.querySelectorAll('.pay-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  ['full','defer','amt','voucher'].forEach(p=>document.getElementById('panel-'+p).classList.remove('visible'));
+  ['full','defer','pct','voucher'].forEach(p=>document.getElementById('panel-'+p).classList.remove('visible'));
   document.getElementById('panel-'+type).classList.add('visible');
   document.getElementById('payErr').style.display='none';
   updatePayCalc();
@@ -802,16 +802,6 @@ function updatePayCalc(){
       document.getElementById('pct-dep-val').textContent='—';
       document.getElementById('pct-rest-val').textContent='—';
     }
-  } else if(selectedPay==='amt'){
-    const dep=parseFloat(document.getElementById('dep-amt').value)||0;
-    if(dep>0&&total>0){
-      const rest=Math.max(0,total-dep);
-      document.getElementById('amt-dep-val').textContent=dep+' zł';
-      document.getElementById('amt-rest-val').textContent='Do dopłaty: '+rest+' zł';
-    } else {
-      document.getElementById('amt-dep-val').textContent='—';
-      document.getElementById('amt-rest-val').textContent='—';
-    }
   }
 }
 
@@ -825,10 +815,6 @@ function getPaySummary(){
     const pct=parseFloat(document.getElementById('dep-pct').value)||0;
     const dep=Math.round(total*pct/100);
     return {text:'Zadatek '+pct+'%: '+dep+' zl | Pozostalo: '+(total-dep)+' zl', deposit:dep, rest:total-dep, voucher:''};
-  }
-  if(selectedPay==='amt'){
-    const dep=parseFloat(document.getElementById('dep-amt').value)||0;
-    return {text:'Zadatek: '+dep+' zl | Pozostalo: '+Math.max(0,total-dep)+' zl', deposit:dep, rest:Math.max(0,total-dep), voucher:''};
   }
   if(selectedPay==='voucher'){
     const num=document.getElementById('voucher-num').value.trim();
