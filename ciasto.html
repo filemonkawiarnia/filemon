@@ -543,7 +543,7 @@
           <div class="payment-tabs">
           <button type="button" class="pay-tab" onclick="selectPay('full', this)">Zapłacono</button>
           <button type="button" class="pay-tab" onclick="selectPay('defer', this)">Do zapłaty przy odbiorze</button>
-          <button type="button" class="pay-tab" onclick="selectPay('pct', this)">Zadatek procentowy</button>
+          <button type="button" class="pay-tab" onclick="selectPay('pct', this)">Zadatek</button>
           <button type="button" class="pay-tab" onclick="selectPay('voucher', this)">Voucher / Licytacja</button>  
           </div>
           <div class="err-msg" id="payErr">Proszę wybrać formę płatności.</div>
@@ -588,7 +588,7 @@
               <label>Numer vouchera / licytacji <span class="req">*</span></label>
               <input type="text" id="voucher-num" placeholder="nr licytacji">
             </div>
-            <p>Wpisz numer — kwota zamówienia jest już opłacona.</p>
+            <p>Wpisz numer licytacji</p>
           </div>
           <div class="err-msg" id="voucherErr" style="margin-top:0.3rem;">Proszę podać numer vouchera / licytacji.</div>
         </div>
@@ -612,8 +612,8 @@
     <h3>Zamówienie<br><em>przyjęte!</em></h3>
     <div class="popup-summary" id="popupSummary"></div>
     <div class="popup-actions">
-      <button class="btn-do-print" onclick="doPrint()">🖨️ Drukuj potwierdzenia</button>
-      <button class="btn-send-sms" id="btnSendSms" onclick="openSmsPreview()">💬 Wyślij SMS</button>
+      <button class="btn-do-print" onclick="doPrint()">Drukuj potwierdzenia</button>
+      <button class="btn-send-sms" id="btnSendSms" onclick="openSmsPreview()">Wyślij SMS</button>
       <button class="btn-close-popup" onclick="closePopup()">Zamknij</button>
     </div>
     <div id="printStatus"></div>
