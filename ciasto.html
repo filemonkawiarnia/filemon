@@ -309,6 +309,7 @@
         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
       <span class="logo-fallback" style="display:none;">Filemon Kocia Kawiarnia</span>
     </div>
+  </div>
 </header>
 
 <div class="page-wrap">
@@ -730,7 +731,6 @@ function getTotal(){
   const extra=parseFloat((document.getElementById('extraCharge')||{}).value)||0;
   return base+(extra>0?extra:0);
 }
-function getBaseTotal(){return getSelected().reduce((s,c)=>s+c.lineTotal,0);}
 function getExtraCharge(){return parseFloat((document.getElementById('extraCharge')||{}).value)||0;}
 function updateSummary(){
   const sel=getSelected();
@@ -784,7 +784,6 @@ function selectPay(type, btn){
   document.getElementById('payErr').style.display='none';
   updatePayCalc();
 }
-function calcDeposit(){updatePayCalc();}
 function updatePayCalc(){
   const total=getTotal();
   if(selectedPay==='full'){
@@ -1055,7 +1054,6 @@ async function doPrintKawiarniaOnly(){
 
 /* ── ESC/POS helpers (PC437 / 48 chars) ── */
 const W=48;
-function esc(...bytes){return bytes;}
 const ESC=0x1B,GS=0x1D;
 const INIT=[ESC,0x40];
 const BOLD_ON=[ESC,0x45,0x01];
@@ -1069,12 +1067,6 @@ const CUT=[GS,0x56,0x42,0x05];
 const LF=[0x0A];
 
 function encPC437(str){
-  // Mapowanie polskich znaków na PC437/CP850 używane przez NPOS T260M
-  const map={
-    'ą':0x86,'ć':0x86,'ę':0x82,'ł':0xC5,'ń':0xA4,'ó':0xA2,'ś':0x9C,'ź':0xE2,'ż':0xE9,
-    'Ą':0x8F,'Ć':0x80,'Ę':0x90,'Ł':0xC4,'Ń':0xA5,'Ó':0xE0,'Ś':0x98,'Ź':0x8D,'Ż':0xAF,
-    'ą':0x85
-  };
   // Przybliżona transliteracja dla znaków bez mapowania
   const approx={
     'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z',
@@ -1090,10 +1082,6 @@ function encPC437(str){
 }
 
 function line(text){return [...encPC437(text.substring(0,W)),...LF];}
-function lineC(text){
-  const pad=Math.max(0,Math.floor((W-text.length)/2));
-  return line(' '.repeat(pad)+text);
-}
 function hr(ch='-'){return line(ch.repeat(W));}
 function lineKV(key,val){
   const k=key.substring(0,W-val.length-1);
