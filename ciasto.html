@@ -466,8 +466,7 @@
     <div class="form-card">
       <div class="form-card-top">
         <h2>Formularz zamówienia</h2>
-        <p>Wypełnij wszystkie pola i kliknij Wyślij zamówienie</p>
-      </div>
+        </div>
       <div class="form-body">
 
         <!-- Wybrane ciasta -->
@@ -625,7 +624,7 @@
 <!-- SMS PREVIEW / DOUBLE CONFIRM OVERLAY -->
 <div class="overlay" id="smsPreviewOverlay">
   <div class="popup-card">
-    <div class="popup-badge">💬 Podgląd wiadomości</div>
+    <div class="popup-badge">Podgląd wiadomości</div>
     <h3>Wyślij<br><em>potwierdzenie SMS</em></h3>
     <div class="popup-summary sms-preview-box" id="smsPreviewText"></div>
     <div class="popup-actions">
@@ -641,7 +640,6 @@
   <div class="pin-card" id="pin-card">
     <div class="pin-card-top">
       <div class="pin-eyebrow">Filemon Kocia Kawiarnia</div>
-      <h2>Wprowadź PIN</h2>
     </div>
     <div class="pin-body">
       <div class="pin-dots" id="pin-dots"></div>
@@ -902,7 +900,7 @@ function closeSmsPreview(){
 // Krok 2: dodatkowe potwierdzenie + faktyczna wysyłka SMS (podwójne zabezpieczenie)
 async function confirmSendSms(){
   if(!lastOrder){return;}
-  if(!confirm('Czy na pewno wysłać SMS z potwierdzeniem do klienta? Tej operacji nie można cofnąć.')) return;
+  if(!confirm('Czy na pewno wysłać SMS z potwierdzeniem do klienta?')) return;
 
   const btn=document.getElementById('btnConfirmSendSms');
   const statusEl=document.getElementById('smsPreviewStatus');
