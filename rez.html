@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Filemon">
+<meta name="theme-color" content="#2C3E6A">
+<title>Filemon — Rezerwacje</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="manifest" href="rez-manifest.json">
+<style>
+:root{
+  --navy:#2C3E6A;--navy2:#1E2E52;--green:#1DB96A;--red:#E84040;--yellow:#F5A623;
+  --bg:#F0EDF8;--card:#FFFFFF;--text:#1B2A4A;--muted:#7A8AAA;--border:rgba(27,42,74,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:5rem}
+
+/* HEADER */
+header{background:var(--navy);padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,0.2)}
+.logo{display:flex;align-items:center;gap:0.55rem}
+.logo img{width:34px;height:34px;border-radius:8px}
+.logo-text{color:#fff;font-size:1.05rem;font-weight:800;letter-spacing:-0.02em}
+.logo-text span{opacity:0.5;font-weight:400;font-size:0.72rem;margin-left:0.3rem}
+#header-date{color:rgba(255,255,255,0.9);font-size:0.82rem;font-weight:600;cursor:pointer;padding:0.35rem 0.65rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);display:flex;align-items:center;gap:0.35rem}
+#header-date:active{background:rgba(255,255,255,0.15)}
+
+/* TABS */
+.tabs{display:flex;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:90}
+.tab{flex:1;padding:0.7rem 0.5rem;text-align:center;font-size:0.75rem;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:2.5px solid transparent;text-transform:uppercase;letter-spacing:0.06em;user-select:none}
+.tab.active{color:var(--navy);border-color:var(--navy)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* DAY NAV */
+.day-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:#fff;border-bottom:1px solid var(--border)}
+.day-nav button{background:none;border:none;font-size:1.5rem;cursor:pointer;padding:0.2rem 0.5rem;color:var(--navy);line-height:1}
+.day-nav button:active{opacity:0.5}
+#day-label{font-weight:700;font-size:0.92rem;color:var(--text);text-align:center;flex:1}
+
+/* SLOTS */
+.slots{padding:0.4rem 0.75rem}
+.slot{display:flex;align-items:flex-start;gap:0.55rem;padding:0.5rem 0;border-bottom:1px solid var(--border);min-height:44px}
+.slot:last-child{border-bottom:none}
+.slot-time{font-size:0.83rem;font-weight:700;color:var(--muted);min-width:40px;padding-top:0.18rem;cursor:pointer;user-select:none}
+.slot-time:hover{color:var(--navy)}
+.slot-res{display:flex;flex-wrap:wrap;gap:0.35rem;flex:1;align-items:flex-start}
+.res-chip{display:inline-flex;align-items:center;background:var(--navy);color:#fff;border-radius:8px;padding:0.28rem 0.55rem;font-size:0.82rem;font-weight:700;cursor:pointer;user-select:none;line-height:1.2;transition:opacity 0.1s}
+.res-chip:active{opacity:0.7}
+.res-chip.no-show{background:#aaa;text-decoration:line-through;opacity:0.6}
+.res-chip.arrived{box-shadow:0 0 0 2px var(--green) inset}
+.slot-warn{font-size:0.85rem;padding-top:0.1rem}
+.slot-add{background:none;border:1.5px dashed var(--border);color:var(--muted);border-radius:8px;padding:0.26rem 0.5rem;font-size:0.8rem;cursor:pointer}
+.slot-add:active{border-color:var(--navy);color:var(--navy)}
+.empty-day{text-align:center;padding:3rem 1rem;color:var(--muted);font-size:0.9rem}
+
+/* Na szerszych ekranach (tablet poziomo) lista godzin dzieli się na kolumny,
+   dzięki czemu wiersze nie są rozciągnięte na całą szerokość i lista jest krótsza. */
+@media (min-width:700px){
+  .slots{column-count:2;column-gap:2rem}
+  .slot{break-inside:avoid;-webkit-column-break-inside:avoid}
+}
+@media (min-width:1100px){
+  .slots{column-count:3}
+}
+
+/* Zakładka Klienci: w widoku poziomym lista dzieli się na kolumny, tak jak lista godzin w "Dzisiaj". */
+@media (min-width:700px){
+  #clients-list{column-count:2;column-gap:1.5rem}
+  #clients-list .client-item{break-inside:avoid;-webkit-column-break-inside:avoid}
+}
+@media (min-width:1100px){
+  #clients-list{column-count:3}
+}
+
+/* Widok poziomy: kalendarz po lewej (pomniejszony), wybrany dzień po prawej —
+   zamiast osobnych zakładek, żeby kafelki dnia nie musiały się przewijać. */
+@media (orientation:landscape) and (min-width:600px){
+  #cal-day-row:has(#tab-calendar.active){
+    display:flex;align-items:flex-start;gap:1rem;padding:0 0.5rem;
+  }
+  #cal-day-row:has(#tab-calendar.active) #tab-calendar{
+    display:block;flex:0 0 380px;max-width:42%;
+  }
+  #cal-day-row:has(#tab-calendar.active) #tab-day{
+    display:block;flex:1;min-width:0;border-left:1px solid var(--border)
+  }
+}
+
+/* FAB */
+.fab{position:fixed;bottom:1.5rem;right:1.25rem;z-index:90;background:var(--navy);color:#fff;border:none;width:58px;height:58px;border-radius:50%;font-size:1.8rem;cursor:pointer;box-shadow:0 4px 20px rgba(44,62,106,0.45);display:flex;align-items:center;justify-content:center;transition:transform 0.15s}
+.fab:active{transform:scale(0.93)}
+
+/* OVERLAY/SHEET */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:flex-end;justify-content:center}
+.overlay.show{display:flex}
+.sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:1.2rem 1.2rem 2.5rem;max-height:92vh;overflow-y:auto}
+.sheet-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 1rem}
+.sheet-title{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:1rem}
+
+/* FORM */
+.f-group{margin-bottom:0.8rem}
+.f-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.3rem;display:block}
+.f-label .opt{font-weight:400;text-transform:none;letter-spacing:0;opacity:0.7}
+.f-input{width:100%;padding:0.65rem 0.8rem;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;font-family:inherit;color:var(--text);background:#fff;outline:none}
+.f-input:focus{border-color:var(--navy)}
+.f-input.error{border-color:var(--red)}
+.f-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A8AAA' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.8rem center}
+
+/* STEPPER */
+.stepper{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+.stepper button{background:none;border:none;width:42px;height:42px;font-size:1.3rem;cursor:pointer;color:var(--navy);font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stepper button:active{background:var(--bg)}
+.stepper span{flex:1;text-align:center;font-size:1.1rem;font-weight:700}
+.stepper-row{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
+
+/* AUTOCOMPLETE */
+.autocomplete-wrap{position:relative}
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--navy);border-radius:10px;z-index:300;max-height:160px;overflow-y:auto;margin-top:2px;box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.autocomplete-item{padding:0.6rem 0.8rem;cursor:pointer;font-size:0.9rem;border-bottom:1px solid var(--border)}
+.autocomplete-item:last-child{border-bottom:none}
+.autocomplete-item:active,.autocomplete-item:hover{background:var(--bg)}
+.autocomplete-item .sub{font-size:0.75rem;color:var(--muted);margin-top:0.1rem}
+
+/* DUPLICATE CLIENT BANNER */
+.phone-match{margin-top:0.4rem;padding:0.55rem 0.7rem;border-radius:10px;font-size:0.82rem;line-height:1.35;background:#eaf2ff;border:1.5px solid var(--navy);color:var(--text);display:none}
+.phone-match.show{display:block}
+.phone-match b{color:var(--navy)}
+
+/* TIME GRID */
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem}
+.time-pill{padding:0.55rem 0.3rem;border:1.5px solid var(--border);border-radius:10px;background:#fff;font-size:0.85rem;font-weight:700;color:var(--text);cursor:pointer;text-align:center;line-height:1.3}
+.time-pill:active{background:var(--bg)}
+.time-pill.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.time-pill .pill-kids{font-size:0.68rem;font-weight:400;display:block;margin-top:0.1rem;opacity:0.75}
+.time-pill.warn-y .pill-kids{color:#d97706}
+.time-pill.warn-r .pill-kids{color:#dc2626}
+.time-pill.selected .pill-kids{opacity:0.8;color:#fff}
+
+/* BUTTONS */
+.btn-primary{width:100%;padding:0.85rem;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;margin-top:0.5rem}
+.btn-primary:active{opacity:0.8}
+.det-actions{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:1rem}
+.det-actions .btn-primary{margin-top:0;font-size:0.85rem;padding:0.75rem 0.4rem}
+.btn-danger{background:var(--red)}
+.btn-ghost{background:none;border:1.5px solid var(--border);color:var(--text)}
+.btn-ghost:active{background:var(--bg)}
+.btn-warn{background:#d97706}
+.btn-success{background:var(--green)}
+
+/* DETAIL */
+.detail-name{font-size:1.2rem;font-weight:800;margin-bottom:0.1rem}
+.detail-time{font-size:0.88rem;color:var(--muted);margin-bottom:1rem}
+.detail-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.9rem}
+.detail-row:last-of-type{border-bottom:none}
+.detail-label{color:var(--muted);font-size:0.8rem}
+.detail-value{font-weight:600}
+.badge-ns{display:inline-block;background:#fde8e8;color:var(--red);font-size:0.7rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:6px}
+.history-item{font-size:0.82rem;color:var(--muted);padding:0.28rem 0;border-bottom:1px solid var(--border)}
+.history-item:last-child{border-bottom:none}
+.history-item.ns{color:var(--red)}
+
+/* CLIENT RESERVATION HISTORY */
+.rh-row{background:#fff;border-radius:12px;padding:0.65rem 0.9rem;margin-bottom:0.5rem;box-shadow:0 1px 6px rgba(27,42,74,0.07);display:flex;justify-content:space-between;align-items:center;gap:0.5rem;cursor:pointer;transition:opacity 0.1s}
+.rh-row:active{opacity:0.7}
+.rh-row.rh-noshow{opacity:0.65}
+.rh-date{font-weight:700;font-size:0.9rem}
+.rh-sub{font-size:0.78rem;color:var(--muted);margin-top:0.1rem}
+.rh-people{font-weight:700;font-size:0.9rem;color:var(--navy);white-space:nowrap}
+.rh-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:0.12rem 0.4rem;border-radius:6px;margin-left:0.4rem}
+.rh-badge.arrived{background:#DDF7E8;color:var(--green)}
+.rh-badge.noshow{background:#fde8e8;color:var(--red)}
+.rh-arrow{color:var(--muted);font-size:0.9rem}
+.cn-note{background:#FFF6DC;border:1px solid #F0DFA0;color:var(--text);border-radius:10px;padding:0.6rem 0.8rem;font-size:0.85rem;margin-top:0.8rem;line-height:1.4;white-space:pre-wrap}
+
+/* CLIENTS */
+.client-item{background:#fff;border-radius:12px;padding:0.8rem 1rem;margin-bottom:0.55rem;box-shadow:0 1px 6px rgba(27,42,74,0.07);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.15s}
+.client-item:active{opacity:0.7}
+.client-item.ns-yellow{background:#FFF1C2}
+.client-item.ns-red{background:#F9D2D2}
+.client-name{font-weight:700;font-size:0.93rem}
+.client-sub{font-size:0.76rem;color:var(--muted);margin-top:0.1rem}
+.client-stats{text-align:right;font-size:0.76rem;color:var(--muted)}
+.client-stats .ns{color:var(--red);font-weight:700}
+
+/* CLIENTS FILTER BAR */
+.clients-filter{padding:0.2rem 0.75rem 0.7rem;display:flex;flex-direction:column;gap:0.5rem}
+.cf-row{display:flex;gap:0.5rem}
+.cf-btn{flex:1;padding:0.5rem 0.4rem;border:1.5px solid var(--border);border-radius:10px;background:#fff;font-size:0.78rem;font-weight:700;color:var(--text);cursor:pointer;font-family:inherit;text-align:center}
+.cf-btn:active{background:var(--bg)}
+.cf-btn.active{border-color:var(--navy);background:var(--navy);color:#fff}
+.cf-check{display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;color:var(--text);user-select:none}
+.cf-check input{width:1.05rem;height:1.05rem;accent-color:var(--navy)}
+
+/* MISC */
+.section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);padding:0.8rem 1rem 0.3rem}
+.toast{position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%) translateY(10px);background:var(--navy);color:#fff;padding:0.55rem 1.2rem;border-radius:30px;font-size:0.85rem;font-weight:600;opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;z-index:500;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:#1DB96A;display:inline-block;margin-left:6px;vertical-align:middle}
+.sync-dot.syncing{background:#F5A623;animation:pulse 1s infinite}
+.sync-dot.error{background:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.loading{text-align:center;padding:3rem 1rem;color:var(--muted)}
+
+/* CALENDAR */
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:#fff;border-bottom:1px solid var(--border)}
+.cal-nav button{background:none;border:none;font-size:1.5rem;cursor:pointer;padding:0.2rem 0.5rem;color:var(--navy);line-height:1}
+.cal-nav button:active{opacity:0.5}
+#cal-month-label{font-weight:700;font-size:0.95rem;color:var(--text);text-align:center;flex:1;text-transform:capitalize}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);padding:0.5rem 0.5rem 0;background:#fff}
+.cal-weekdays span{text-align:center;font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0.35rem;padding:0.5rem;background:#fff}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--bg);cursor:pointer;user-select:none;position:relative;border:1.5px solid transparent}
+.cal-day:active{opacity:0.7}
+.cal-day-num{font-size:0.88rem;font-weight:700;color:var(--text)}
+.cal-day.other-month{opacity:0.35}
+.cal-day.today{border-color:var(--navy)}
+.cal-day.has-res{background:var(--green)}
+.cal-day.has-res .cal-day-num{color:#fff}
+.cal-day.today.has-res{border-color:var(--navy2)}
+.cal-day.has-res.past-day{background:var(--muted)}
+.cal-day.today.has-res.past-day{border-color:var(--navy2)}
+.cal-day.selected{box-shadow:0 0 0 2.5px var(--navy) inset}
+.date-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;align-items:center;justify-content:center}
+.date-overlay.show{display:flex}
+.date-box{background:#fff;border-radius:20px;padding:1.5rem;max-width:300px;width:90%}
+.date-box input[type=date]{width:100%;padding:0.7rem;border:1.5px solid var(--border);border-radius:10px;font-size:1rem;font-family:inherit;margin-bottom:0.8rem;outline:none}
+.date-box input[type=date]:focus{border-color:var(--navy)}
+
+/* PIN SCREEN */
+.pin-screen{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:1.5rem;padding-top:10vh;padding-bottom:2rem;overflow-y:auto}
+.pin-logo{width:72px;height:72px;border-radius:18px;margin-bottom:0.5rem}
+.pin-title{color:#fff;font-size:1.2rem;font-weight:800;letter-spacing:-0.02em}
+.pin-sub{color:rgba(255,255,255,0.5);font-size:0.82rem;margin-top:-1rem}
+.pin-dots{display:flex;gap:0.75rem}
+.pin-dot{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);transition:background 0.15s,border-color 0.15s}
+.pin-dot.filled{background:#fff;border-color:#fff}
+.pin-dot.error{background:var(--red);border-color:var(--red)}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;width:260px}
+.pin-btn{background:rgba(255,255,255,0.1);border:none;border-radius:14px;height:68px;font-size:1.4rem;font-weight:700;color:#fff;cursor:pointer;font-family:inherit;transition:background 0.1s}
+.pin-btn:active{background:rgba(255,255,255,0.25)}
+.pin-btn.del{font-size:1.1rem}
+.pin-btn.empty{background:none;pointer-events:none}
+.pin-error{color:var(--red);font-size:0.82rem;font-weight:600;height:1.2rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-text">Filemon <span>rezerwacje</span></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.5rem;">
+    <div id="header-date" onclick="openDatePicker()">📅 <span id="hd-text"></span> <span class="sync-dot" id="sync-dot"></span></div>
+    <div id="user-badge" onclick="filemonLogout()" title="Kliknij, aby się wylogować i zmienić użytkownika" style="font-size:0.72rem;font-weight:700;color:#fff;background:rgba(255,255,255,0.15);padding:0.25rem 0.6rem;border-radius:20px;cursor:pointer;white-space:nowrap;"></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('calendar')">Kalendarz</div>
+  <div class="tab" onclick="switchTab('day')">Dzisiaj</div>
+  <div class="tab" onclick="switchTab('clients')">Klienci<span id="clients-tab-count"></span></div>
+</div>
+
+<div id="cal-day-row">
+<div id="tab-calendar" class="tab-content active">
+  <div class="cal-nav">
+    <button onclick="changeMonth(-1)">‹</button>
+    <div id="cal-month-label"></div>
+    <button onclick="changeMonth(1)">›</button>
+  </div>
+  <div class="cal-weekdays">
+    <span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span>
+  </div>
+  <div class="cal-grid" id="cal-grid"><div class="loading">Ładowanie...</div></div>
+</div>
+
+<div id="tab-day" class="tab-content">
+  <div class="day-nav">
+    <button onclick="changeDay(-1)">‹</button>
+    <div id="day-label"></div>
+    <button onclick="changeDay(1)">›</button>
+  </div>
+  <div class="slots" id="slots"><div class="loading">Ładowanie...</div></div>
+</div>
+</div>
+
+<div id="tab-clients" class="tab-content">
+  <div class="section-label">Baza klientów</div>
+  <div class="clients-filter">
+    <div class="cf-row">
+      <button class="cf-btn active" id="cf-sort-alpha" onclick="setClientSort('alpha')">A-Z</button>
+      <button class="cf-btn" id="cf-sort-res" onclick="setClientSort('res')">Rezerwacje ↓</button>
+      <button class="cf-btn" id="cf-sort-noshow" onclick="setClientSort('noshow')">Nieobecności ↓</button>
+      <button class="cf-btn" id="cf-sort-added" onclick="setClientSort('added')">Data dodania ↓</button>
+    </div>
+    <label class="cf-check"><input type="checkbox" id="cf-only-noshow" onchange="renderClients()"> Pokaż tylko z nieobecnościami</label>
+  </div>
+  <div style="padding:0 0.75rem" id="clients-list"></div>
+</div>
+
+<button class="fab" onclick="openAdd()">+</button>
+
+<!-- ADD/EDIT SHEET -->
+<div class="overlay" id="add-overlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title" id="add-title">Nowa rezerwacja</div>
+    <div id="step-date">
+      <div class="f-group">
+        <label class="f-label">Data</label>
+        <input type="date" class="f-input" id="f-date">
+      </div>
+      <button class="btn-primary" onclick="goStep(2)">Dalej →</button>
+    </div>
+    <div id="step-time" style="display:none">
+      <div class="f-group">
+        <label class="f-label">Wybierz godzinę</label>
+        <div class="time-grid" id="time-grid"></div>
+      </div>
+      <button class="btn-primary btn-ghost" onclick="goStep(1)" style="margin-top:0.6rem">← Wróć</button>
+    </div>
+    <div id="step-form" style="display:none">
+      <div class="f-group">
+        <label class="f-label">Godzina</label>
+        <div id="sel-time-label" style="font-weight:700;font-size:1.1rem;color:var(--navy)"></div>
+      </div>
+      <div class="stepper-row">
+        <div class="f-group">
+          <label class="f-label">Dorośli (12+)</label>
+          <div class="stepper">
+            <button onclick="step('adults',-1)">−</button>
+            <span id="v-adults">2</span>
+            <button onclick="step('adults',1)">+</button>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Dzieci (&lt;12)</label>
+          <div class="stepper">
+            <button onclick="step('kids',-1)">−</button>
+            <span id="v-kids">0</span>
+            <button onclick="step('kids',1)">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="f-group autocomplete-wrap">
+        <label class="f-label">Imię i nazwisko</label>
+        <input type="text" class="f-input" id="f-name" placeholder="np. Anna Nowak" autocomplete="off"
+          oninput="onNameInput(this.value)" onblur="setTimeout(closeAC,200)">
+        <div class="autocomplete-list" id="ac-list" style="display:none"></div>
+      </div>
+      <div class="f-group autocomplete-wrap">
+        <label class="f-label">Telefon <span class="opt">(opcjonalne)</span></label>
+        <input type="tel" class="f-input" id="f-phone" placeholder="500 123 456" autocomplete="off"
+          oninput="onPhoneInput(this.value)" onblur="onPhoneBlur(this)">
+        <div class="autocomplete-list" id="ac-phone-list" style="display:none"></div>
+        <div class="phone-match" id="phone-match"></div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Stolik <span class="opt">(opcjonalne)</span></label>
+        <select class="f-input f-select" id="f-table">
+          <option value="">— brak przypisania —</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8</option>
+          <option>9</option><option>10</option>
+          </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Uwagi <span class="opt">(opcjonalne)</span></label>
+        <input type="text" class="f-input" id="f-notes" placeholder="np. urodziny, alergia...">
+      </div>
+      <button class="btn-primary" id="save-btn" onclick="saveReservation()">Zapisz rezerwację</button>
+      <button class="btn-primary btn-ghost" onclick="goStep(2)" style="margin-top:0.5rem">← Zmień godzinę</button>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL SHEET -->
+<div class="overlay" id="det-overlay">
+  <div class="sheet"><div class="sheet-handle"></div><div id="det-content"></div></div>
+</div>
+
+<!-- CLIENT DETAIL -->
+<div class="overlay" id="cli-overlay">
+  <div class="sheet"><div class="sheet-handle"></div><div id="cli-content"></div></div>
+</div>
+
+<!-- DATE PICKER -->
+<div class="date-overlay" id="dp-overlay">
+  <div class="date-box">
+    <div style="font-weight:700;margin-bottom:0.8rem">Wybierz datę</div>
+    <input type="date" id="dp-input">
+    <button class="btn-primary" onclick="applyDate()">OK</button>
+    <button class="btn-primary btn-ghost" onclick="closeDatePicker()" style="margin-top:0.5rem">Anuluj</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, query, where, getDocs, updateDoc }
+  from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBOGm3N-8zPtjvVv7hx1F-jqFpBU-dD7RY",
+  authDomain: "rezerwacja-af82e.firebaseapp.com",
+  projectId: "rezerwacja-af82e",
+  storageBucket: "rezerwacja-af82e.firebasestorage.app",
+  messagingSenderId: "316318620114",
+  appId: "1:316318620114:web:453d19957ab0af4f8b100b"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ─── STATE ───
+const HOURS = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30',
+               '15:00','15:30','16:00','16:30','17:00','17:30','18:00'];
+const KIDS_WARN=2, KIDS_RED=4;
+
+let currentDate = todayStr();
+let dayReservations = {}; // id -> res (for current day, live)
+let allClients = {};      // id -> client (live)
+let editId = null;
+let selTime = '';
+let vAdults=2, vKids=0;
+let unsubDay = null;
+let currentUserName = sessionStorage.getItem('filemon_user') || '';
+
+// ─── CALENDAR STATE ───
+const initCalDate = new Date(currentDate);
+let calYear = initCalDate.getFullYear();
+let calMonth = initCalDate.getMonth(); // 0-based
+let unsubMonth = null;
+let monthResDates = new Set();
+let monthDayInfo = {};
+
+function updateUserBadge(){
+  const el = document.getElementById('user-badge');
+  if (el) el.textContent = currentUserName ? '👤 ' + currentUserName : '';
+}
+updateUserBadge();
+window.addEventListener('filemon-login', e => {
+  currentUserName = e.detail.name;
+  updateUserBadge();
+});
+
+function todayStr(){const d=new Date();return d.toISOString().slice(0,10)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+function setSyncState(state){
+  const dot=document.getElementById('sync-dot');
+  dot.className='sync-dot'+(state==='syncing'?' syncing':state==='error'?' error':'');
+}
+
+// ─── FIREBASE LISTENERS ───
+function subscribeDay(date){
+  if(unsubDay)unsubDay();
+  setSyncState('syncing');
+  const q = query(collection(db,'reservations'),where('date','==',date));
+  unsubDay = onSnapshot(q, snap=>{
+    dayReservations={};
+    snap.forEach(d=>dayReservations[d.id]=d.data());
+    setSyncState('ok');
+    renderDay();
+  }, ()=>setSyncState('error'));
+}
+
+function subscribeClients(){
+  onSnapshot(collection(db,'clients'), snap=>{
+    allClients={};
+    snap.forEach(d=>allClients[d.id]=d.data());
+    const countEl=document.getElementById('clients-tab-count');
+    if(countEl)countEl.textContent=' ('+snap.size+')';
+  });
+}
+
+function pad2(n){return n<10?'0'+n:''+n}
+
+function subscribeMonth(year,month){
+  if(unsubMonth)unsubMonth();
+  const start=`${year}-${pad2(month+1)}-01`;
+  const lastDay=new Date(year,month+1,0).getDate();
+  const end=`${year}-${pad2(month+1)}-${pad2(lastDay)}`;
+  const q=query(collection(db,'reservations'),where('date','>=',start),where('date','<=',end));
+  unsubMonth=onSnapshot(q, snap=>{
+    monthResDates=new Set();
+    monthDayInfo={};
+    snap.forEach(d=>{
+      const data=d.data();
+      monthResDates.add(data.date);
+      if(!monthDayInfo[data.date])monthDayInfo[data.date]={total:0,resolved:0};
+      monthDayInfo[data.date].total++;
+      if(data.arrived||data.noShow)monthDayInfo[data.date].resolved++;
+    });
+    renderCalendar();
+  });
+}
+
+// ─── INIT ───
+subscribeClients();
+subscribeDay(currentDate);
+subscribeMonth(calYear,calMonth);
+updateDayHeader();
+renderCalendar();
+autoResolvePastReservations();
+
+// Domyślnie po zakończeniu dnia nierozstrzygnięte rezerwacje (bez potwierdzenia
+// przybycia i bez oznaczenia nieobecności) są automatycznie liczone jako obecność.
+async function autoResolvePastReservations(){
+  try{
+    const today=todayStr();
+    const q=query(collection(db,'reservations'),where('date','<',today));
+    const snap=await getDocs(q);
+    const toFix=[];
+    snap.forEach(d=>{
+      const data=d.data();
+      if(!data.arrived&&!data.noShow)toFix.push(d.ref);
+    });
+    for(const ref of toFix){await updateDoc(ref,{arrived:true});}
+  }catch(e){/* brak połączenia lub uprawnień — spróbuje przy kolejnym starcie */}
+}
+
+// ─── HELPERS ───
+function fmtDateLabel(str){
+  const [y,m,d]=str.split('-').map(Number);
+  const date=new Date(y,m-1,d);
+  const dni=['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'];
+  const mies=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+  const today=todayStr();
+  const tom=new Date();tom.setDate(tom.getDate()+1);
+  const tomStr=tom.toISOString().slice(0,10);
+  let pre=str===today?'Dziś — ':str===tomStr?'Jutro — ':'';
+  return pre+d+' '+mies[m-1]+' ('+dni[date.getDay()]+')';
+}
+
+function updateDayHeader(){
+  document.getElementById('day-label').textContent=fmtDateLabel(currentDate);
+  document.getElementById('hd-text').textContent=fmtDateLabel(currentDate).replace(/Dziś — |Jutro — /,'');
+}
+
+// ─── TABS ───
+window.switchTab=function(name){
+  const order=['calendar','day','clients'];
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active',order[i]===name);
+  });
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(name==='clients')renderClients();
+  if(name==='calendar')renderCalendar();
+};
+
+// ─── CALENDAR VIEW ───
+function renderCalendar(){
+  const y=calYear, m=calMonth;
+  const miesiace=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+  document.getElementById('cal-month-label').textContent = miesiace[m]+' '+y;
+
+  const firstOfMonth=new Date(y,m,1);
+  const jsDay=firstOfMonth.getDay(); // 0=niedz..6=sob
+  const leading=(jsDay+6)%7; // poniedziałek jako pierwszy dzień tygodnia
+  const daysInMonth=new Date(y,m+1,0).getDate();
+  const totalCells=Math.ceil((leading+daysInMonth)/7)*7;
+  const todayS=todayStr();
+
+  let html='';
+  for(let i=0;i<totalCells;i++){
+    const dayNum=i-leading+1;
+    const cellDate=new Date(y,m,dayNum);
+    const dStr=cellDate.getFullYear()+'-'+pad2(cellDate.getMonth()+1)+'-'+pad2(cellDate.getDate());
+    const inMonth=cellDate.getMonth()===m;
+    const isToday=dStr===todayS;
+    const hasRes=monthResDates.has(dStr);
+    const isPast=dStr<todayS;
+    const info=monthDayInfo[dStr];
+    const allResolved=hasRes&&info&&info.total>0&&info.resolved===info.total;
+    html+=`<div class="cal-day${inMonth?'':' other-month'}${isToday?' today':''}${hasRes?' has-res':''}${hasRes&&(isPast||allResolved)?' past-day':''}${dStr===currentDate?' selected':''}" onclick="selectCalendarDay('${dStr}')">
+      <span class="cal-day-num">${cellDate.getDate()}</span>
+    </div>`;
+  }
+  document.getElementById('cal-grid').innerHTML=html;
+}
+
+window.changeMonth=function(delta){
+  let newMonth=calMonth+delta, newYear=calYear;
+  if(newMonth<0){newMonth=11;newYear--;}
+  else if(newMonth>11){newMonth=0;newYear++;}
+  calMonth=newMonth;calYear=newYear;
+  renderCalendar();
+  subscribeMonth(calYear,calMonth);
+};
+
+window.selectCalendarDay=function(dStr){
+  currentDate=dStr;
+  subscribeDay(currentDate);
+  if(isSplitView()){
+    updateDayHeader();
+    renderCalendar();
+  } else {
+    switchTab('day');
+  }
+};
+
+// W widoku poziomym (tablet/telefon obrócony) kalendarz i wybrany dzień
+// wyświetlają się obok siebie zamiast jako osobne zakładki.
+function isSplitView(){
+  return window.matchMedia('(orientation: landscape) and (min-width: 600px)').matches;
+}
+
+// ─── DAY VIEW ───
+function renderDay(){
+  updateDayHeader();
+  const html=HOURS.map(h=>{
+    const hrRes=Object.values(dayReservations).filter(r=>r.time===h);
+    const kids=hrRes.reduce((s,r)=>s+r.kids,0);
+    let warn='';
+    if(kids>=KIDS_RED)warn='<span class="slot-warn">🔴</span>';
+    else if(kids>=KIDS_WARN)warn='<span class="slot-warn">⚠️</span>';
+    const chips=hrRes.map(r=>`<span class="res-chip${r.noShow?' no-show':r.arrived?' arrived':''}" onclick="openDetail('${r.id}')">${r.adults}+${r.kids}</span>`).join('');
+    return `<div class="slot">
+      <div class="slot-time" onclick="openAddAtTime('${h}')">${h}</div>
+      ${warn}
+      <div class="slot-res">${chips}<button class="slot-add" onclick="openAddAtTime('${h}')">+</button></div>
+    </div>`;
+  }).join('');
+  document.getElementById('slots').innerHTML=html;
+}
+
+window.changeDay=function(d){
+  const dt=new Date(currentDate);dt.setDate(dt.getDate()+d);
+  currentDate=dt.toISOString().slice(0,10);
+  subscribeDay(currentDate);
+};
+
+// ─── DATE PICKER ───
+window.openDatePicker=function(){
+  document.getElementById('dp-input').value=currentDate;
+  document.getElementById('dp-overlay').classList.add('show');
+};
+window.closeDatePicker=function(){document.getElementById('dp-overlay').classList.remove('show')};
+window.applyDate=function(){
+  const v=document.getElementById('dp-input').value;
+  if(v){currentDate=v;subscribeDay(currentDate);}
+  closeDatePicker();
+};
+
+// ─── ADD FLOW ───
+window.openAdd=function(){
+  editId=null;
+  document.getElementById('add-title').textContent='Nowa rezerwacja';
+  document.getElementById('save-btn').textContent='Zapisz rezerwację';
+  resetForm();
+  goStep(1);
+  document.getElementById('add-overlay').classList.add('show');
+};
+
+window.openAddAtTime=function(time){
+  editId=null;
+  document.getElementById('add-title').textContent='Nowa rezerwacja';
+  document.getElementById('save-btn').textContent='Zapisz rezerwację';
+  resetForm();
+  selTime=time;
+  document.getElementById('f-date').value=currentDate;
+  goStep(3);
+  document.getElementById('add-overlay').classList.add('show');
+};
+
+function resetForm(){
+  vAdults=2;vKids=0;selTime='';
+  document.getElementById('f-date').value=currentDate;
+  ['f-name','f-phone','f-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-table').value='';
+  document.getElementById('v-adults').textContent='2';
+  document.getElementById('v-kids').textContent='0';
+  document.getElementById('f-name').classList.remove('error');
+  document.getElementById('phone-match').classList.remove('show');
+}
+
+window.goStep=function(n){
+  document.getElementById('step-date').style.display=n===1?'block':'none';
+  document.getElementById('step-time').style.display=n===2?'block':'none';
+  document.getElementById('step-form').style.display=n===3?'block':'none';
+  if(n===2)renderTimeGrid();
+  if(n===3)document.getElementById('sel-time-label').textContent=selTime;
+};
+
+function renderTimeGrid(){
+  const date=document.getElementById('f-date').value||currentDate;
+  // use dayReservations if same date, else fetch? For simplicity use dayReservations (same date flow)
+  const grid=HOURS.map(h=>{
+    const kids=Object.values(dayReservations).reduce((s,r)=>r.time===h?s+r.kids:s,0);
+    let cls='time-pill';
+    if(kids>=KIDS_RED)cls+=' warn-r';
+    else if(kids>=KIDS_WARN)cls+=' warn-y';
+    if(h===selTime)cls+=' selected';
+    const kl=kids>0?`<span class="pill-kids">dzieci: ${kids}</span>`:`<span class="pill-kids"> </span>`;
+    return `<button class="${cls}" onclick="selectTime('${h}')">${h}${kl}</button>`;
+  }).join('');
+  document.getElementById('time-grid').innerHTML=grid;
+}
+
+window.selectTime=function(t){
+  selTime=t;
+  document.querySelectorAll('.time-pill').forEach(p=>{
+    p.classList.toggle('selected',p.textContent.startsWith(t));
+  });
+  setTimeout(()=>goStep(3),120);
+};
+
+window.step=function(field,delta){
+  if(field==='adults'){vAdults=Math.max(0,vAdults+delta);document.getElementById('v-adults').textContent=vAdults;}
+  else{vKids=Math.max(0,vKids+delta);document.getElementById('v-kids').textContent=vKids;}
+};
+
+// ─── AUTOCOMPLETE ───
+window.onNameInput=function(val){
+  const q=val.trim().toLowerCase();
+  const digits=val.replace(/\D/g,'');
+  const list=document.getElementById('ac-list');
+  if(q.length<2 && digits.length<3){list.style.display='none';return;}
+  const matches=Object.values(allClients).filter(c=>
+    (q.length>=2 && c.name.toLowerCase().includes(q)) ||
+    (digits.length>=3 && c.phone && c.phone.replace(/\D/g,'').includes(digits))
+  ).slice(0,5);
+  if(!matches.length){list.style.display='none';return;}
+  list.innerHTML=matches.map(c=>`<div class="autocomplete-item" onmousedown="fillClient('${c.id}')">
+    ${c.name}<div class="sub">${c.phone||'brak tel.'} · rez: ${c.reservations||0}</div></div>`).join('');
+  list.style.display='block';
+};
+
+// ─── TELEFON: normalizacja i formatowanie ───
+// Zwraca same cyfry numeru krajowego (9 cyfr), niezależnie od tego czy
+// wpisano numer kierunkowy (+48 / 48 / 0048) czy nie — dzięki temu
+// porównywanie i wyszukiwanie po telefonie zawsze działa spójnie.
+function phoneDigits(val){
+  let d=(val||'').replace(/\D/g,'');
+  if(d.startsWith('0048'))d=d.slice(4);
+  else if(d.startsWith('48')&&d.length>9)d=d.slice(2);
+  return d.slice(0,9);
+}
+// Formatuje numer krajowy do postaci XXX-XXX-XXX (myślniki), obcinając
+// ewentualny numer kierunkowy — każdy wpisany numer trafia do tego samego formatu.
+function formatPhone(val){
+  const d=phoneDigits(val);
+  const parts=[];
+  if(d.length>0)parts.push(d.slice(0,3));
+  if(d.length>3)parts.push(d.slice(3,6));
+  if(d.length>6)parts.push(d.slice(6,9));
+  return parts.join('-');
+}
+window.onPhoneBlur=function(input){
+  input.value=formatPhone(input.value);
+  setTimeout(closeAC,200);
+};
+
+window.onPhoneInput=function(val){
+  const q=phoneDigits(val);
+  const list=document.getElementById('ac-phone-list');
+  const banner=document.getElementById('phone-match');
+  if(q.length<3){list.style.display='none';banner.classList.remove('show');return;}
+  const matches=Object.values(allClients).filter(c=>c.phone&&phoneDigits(c.phone).includes(q)).slice(0,4);
+  if(!matches.length){list.style.display='none';banner.classList.remove('show');return;}
+  list.innerHTML=matches.map(c=>`<div class="autocomplete-item" onmousedown="fillClient('${c.id}')">
+    ${c.name}<div class="sub">${c.phone} · rez: ${c.reservations||0}</div></div>`).join('');
+  list.style.display='block';
+  // Dokładne dopasowanie (pełne 9 cyfr) → wyraźny baner "klient już w bazie"
+  // zamiast tylko podpowiedzi do kliknięcia.
+  const exact = q.length===9 ? matches.find(c=>phoneDigits(c.phone)===q) : null;
+  if(exact){
+    banner.innerHTML=`📋 Klient już w bazie: <b>${exact.name}</b> (${exact.reservations||0} rez.)`;
+    banner.classList.add('show');
+  } else {
+    banner.classList.remove('show');
+  }
+};
+
+window.fillClient=function(id){
+  const c=allClients[id];if(!c)return;
+  document.getElementById('f-name').value=c.name;
+  document.getElementById('f-phone').value=c.phone||'';
+  closeAC();
+};
+window.closeAC=function(){
+  document.getElementById('ac-list').style.display='none';
+  document.getElementById('ac-phone-list').style.display='none';
+};
+
+// ─── SAVE ───
+window.saveReservation=async function(){
+  const name=document.getElementById('f-name').value.trim();
+  if(!name){document.getElementById('f-name').classList.add('error');return;}
+  document.getElementById('f-name').classList.remove('error');
+  if(!selTime){toast('Wybierz godzinę');return;}
+  const date=document.getElementById('f-date').value||currentDate;
+  const phone=formatPhone(document.getElementById('f-phone').value);
+  const table=document.getElementById('f-table').value;
+  const notes=document.getElementById('f-notes').value.trim();
+  setSyncState('syncing');
+  try{
+    if(editId){
+      await updateDoc(doc(db,'reservations',editId),{name,adults:vAdults,kids:vKids,phone,table,notes});
+    } else {
+      const id=uid();
+      await setDoc(doc(db,'reservations',id),{id,date,time:selTime,name,adults:vAdults,kids:vKids,phone,table,notes,noShow:false,arrived:false,addedBy:currentUserName||''});
+      await upsertClient(name,phone);
+    }
+    setSyncState('ok');
+    closeOverlay('add-overlay');
+    if(date!==currentDate){currentDate=date;subscribeDay(currentDate);}
+    toast(editId?'Zaktualizowano ✓':'Zapisano rezerwację ✓');
+    editId=null;
+  }catch(e){setSyncState('error');toast('Błąd zapisu — sprawdź połączenie');}
+};
+
+async function upsertClient(name,phone){
+  let found=null;
+  const snap=Object.values(allClients);
+  if(phone)found=snap.find(c=>c.phone&&phoneDigits(c.phone)===phoneDigits(phone));
+  if(!found)found=snap.find(c=>c.name.toLowerCase()===name.toLowerCase());
+  if(found){
+    await updateDoc(doc(db,'clients',found.id),{name,phone:phone||found.phone||'',reservations:(found.reservations||0)+1});
+  } else {
+    const id=uid();
+    await setDoc(doc(db,'clients',id),{id,name,phone,reservations:1,noShows:0,createdAt:new Date().toISOString()});
+  }
+}
+
+// ─── DETAIL ───
+window.openDetail=function(id){
+  const r=dayReservations[id];if(!r)return;
+  const clientRez=[];
+  // show recent history from allClients? We'll build from snapshot — simplified
+  const nsBadge=r.noShow?'<span class="badge-ns">nieobecność</span>':''
+  const c=Object.values(allClients).find(x=>x.name===r.name||(r.phone&&x.phone===r.phone));
+  const nsCount=c?c.noShows||0:0;
+  document.getElementById('det-content').innerHTML=`
+    <div class="detail-name">${r.name} ${nsBadge}</div>
+    <div class="detail-time">${r.date} · ${r.time}</div>
+    <div class="detail-row"><span class="detail-label">Dorośli (12+)</span><span class="detail-value">${r.adults}</span></div>
+    <div class="detail-row"><span class="detail-label">Dzieci (&lt;12)</span><span class="detail-value">${r.kids}</span></div>
+    ${r.phone?`<div class="detail-row"><span class="detail-label">Telefon</span><span class="detail-value"><a href="tel:${r.phone}" style="color:var(--navy);font-weight:600;text-decoration:none">${r.phone}</a></span></div>`:''}
+    ${r.table?`<div class="detail-row"><span class="detail-label">Stolik</span><span class="detail-value">${r.table}</span></div>`:''}
+    ${r.notes?`<div class="detail-row"><span class="detail-label">Uwagi</span><span class="detail-value">${r.notes}</span></div>`:''}
+    ${nsCount>0?`<div class="detail-row"><span class="detail-label">Nieobecności klienta</span><span class="detail-value"><span class="badge-ns">⚠️ ${nsCount}</span></span></div>`:''}
+    ${r.addedBy?`<div class="detail-row"><span class="detail-label">Przyjął/-ęła</span><span class="detail-value">${r.addedBy}</span></div>`:''}
+    <div class="det-actions">
+      <button class="btn-primary" onclick="editRes('${id}')">Edytuj</button>
+      <button class="btn-primary ${r.arrived?' btn-ghost':' btn-success'}" onclick="toggleArrived('${id}')">${r.arrived?'✅ Cofnij przybycie':'Potwierdź przybycie'}</button>
+      <button class="btn-primary ${r.noShow?'':' btn-warn'}" onclick="toggleNoShow('${id}')">${r.noShow?'Cofnij nieobecność':'Oznacz nieobecność'}</button>
+      <button class="btn-primary btn-danger" onclick="deleteRes('${id}')">Usuń rezerwację</button>
+      <button class="btn-primary btn-ghost" onclick="printTableCard('${id}')">🖨️ Drukuj</button>
+      <button class="btn-primary btn-ghost" onclick="closeOverlay('det-overlay')">Zamknij</button>
+    </div>
+  `;
+  document.getElementById('det-overlay').classList.add('show');
+};
+
+window.editRes=function(id){
+  const r=dayReservations[id];if(!r)return;
+  closeOverlay('det-overlay');
+  editId=id;selTime=r.time;vAdults=r.adults;vKids=r.kids;
+  document.getElementById('add-title').textContent='Edytuj rezerwację';
+  document.getElementById('save-btn').textContent='Zapisz zmiany';
+  document.getElementById('f-date').value=r.date;
+  document.getElementById('f-name').value=r.name;
+  document.getElementById('f-phone').value=r.phone||''
+  document.getElementById('f-table').value=r.table||'';
+  document.getElementById('f-notes').value=r.notes||''
+  document.getElementById('v-adults').textContent=vAdults;
+  document.getElementById('v-kids').textContent=vKids;
+  goStep(3);
+  document.getElementById('add-overlay').classList.add('show');
+};
+
+window.toggleArrived=async function(id){
+  const r=dayReservations[id];if(!r)return;
+  const newVal=!r.arrived;
+  setSyncState('syncing');
+  try{
+    const patch={arrived:newVal};
+    if(newVal&&r.noShow){
+      patch.noShow=false;
+      const c=Object.values(allClients).find(x=>x.name===r.name||(r.phone&&x.phone===r.phone));
+      if(c){await updateDoc(doc(db,'clients',c.id),{noShows:Math.max(0,(c.noShows||0)-1)});}
+    }
+    await updateDoc(doc(db,'reservations',id),patch);
+    setSyncState('ok');
+    closeOverlay('det-overlay');
+    toast(newVal?'Potwierdzono przybycie ✅':'Cofnięto potwierdzenie przybycia');
+  }catch{setSyncState('error');}
+};
+
+window.toggleNoShow=async function(id){
+  const r=dayReservations[id];if(!r)return;
+  const newVal=!r.noShow;
+  setSyncState('syncing');
+  try{
+    const patch={noShow:newVal};
+    if(newVal&&r.arrived)patch.arrived=false;
+    await updateDoc(doc(db,'reservations',id),patch);
+    const c=Object.values(allClients).find(x=>x.name===r.name||(r.phone&&x.phone===r.phone));
+    if(c){await updateDoc(doc(db,'clients',c.id),{noShows:Math.max(0,(c.noShows||0)+(newVal?1:-1))});}
+    setSyncState('ok');
+    closeOverlay('det-overlay');
+    toast(newVal?'Oznaczono nieobecność ⚠️':'Cofnięto nieobecność');
+  }catch{setSyncState('error');}
+};
+
+// ══════════ ESC/POS PRINT — kartka na stolik (jak w ciasto.html) ══════════
+const ESC=0x1B,GS=0x1D;
+const P_INIT=[ESC,0x40];
+const P_BOLD_ON=[ESC,0x45,0x01];
+const P_BOLD_OFF=[ESC,0x45,0x00];
+const P_ALIGN_C=[ESC,0x61,0x01];
+const P_SIZE_BIG=[GS,0x21,0x44];
+const P_SIZE_NORM=[GS,0x21,0x22];
+const P_CUT=[GS,0x56,0x42,0x05];
+const P_LF=[0x0A];
+const P_W=48;
+
+function p_encPC437(str){
+  const approx={
+    'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z',
+    'Ą':'A','Ć':'C','Ę':'E','Ł':'L','Ń':'N','Ó':'O','Ś':'S','Ź':'Z','Ż':'Z'
+  };
+  const bytes=[];
+  for(const ch of str){
+    if(ch.charCodeAt(0)<128){bytes.push(ch.charCodeAt(0));}
+    else if(approx[ch]){bytes.push(approx[ch].charCodeAt(0));}
+    else{bytes.push(0x3F);}
+  }
+  return bytes;
+}
+function p_firstName(fullName){
+  return (fullName||'').trim().split(/\s+/)[0]||'';
+}
+function p_line(text){return [...p_encPC437(text.substring(0,P_W)),...P_LF];}
+function p_lineC(text){
+  const pad=Math.max(0,Math.floor((P_W-text.length)/2));
+  return p_line(' '.repeat(pad)+text);
+}
+
+function buildTableCardEscPos(name,time){
+  const bytes=[];
+  const push=arr=>arr.forEach(b=>bytes.push(b));
+  push(P_INIT);
+  push([0x1B,0x37,0x08,0x08,0x00]); // max intensywność grzania (NPOS)
+  push(P_ALIGN_C);
+  push(p_line(""));
+  push(P_CUT);
+  push([ESC,0x64,12]);              // ESC d 19 — ok. 7cm pustego miejsca
+  push(P_SIZE_BIG);
+  push(P_BOLD_ON);
+  push(p_line(p_firstName(name)));
+  push(P_SIZE_NORM);
+  push(p_line(""));
+  push(p_line(time));
+  push(P_BOLD_OFF);
+  push([ESC,0x64,4]);              // dosuwa do ok. 14cm łącznie
+  push(P_CUT);
+  return new Uint8Array(bytes);
+}
+
+async function sendToPrinter(data){
+  const PRINTER_IP='192.168.1.10';
+  const PRINTER_PORT=9100;
+  try{
+    await fetch('http://'+PRINTER_IP+':'+PRINTER_PORT+'/',{method:'POST',body:data,mode:'no-cors'});
+    return;
+  }catch(e1){
+    try{
+      const res2=await fetch('http://127.0.0.1:8080/print',{
+        method:'POST',
+        headers:{'Content-Type':'application/octet-stream','X-Printer-IP':PRINTER_IP,'X-Printer-Port':String(PRINTER_PORT)},
+        body:data
+      });
+      if(!res2.ok)throw new Error('bridge HTTP '+res2.status);
+      return;
+    }catch(e2){
+      throw new Error('Brak połączenia z drukarką '+PRINTER_IP+':'+PRINTER_PORT);
+    }
+  }
+}
+
+window.printTableCard=async function(id){
+  const r=dayReservations[id];if(!r)return;
+  try{
+    await sendToPrinter(buildTableCardEscPos(r.name,r.time));
+    toast('Wysłano do druku 🖨️');
+  }catch(e){
+    toast('Błąd drukarki: '+e.message);
+  }
+};
+
+window.deleteRes=async function(id){
+  if(!confirm('Usunąć tę rezerwację?'))return;
+  setSyncState('syncing');
+  try{
+    await deleteDoc(doc(db,'reservations',id));
+    setSyncState('ok');closeOverlay('det-overlay');toast('Rezerwacja usunięta');
+  }catch{setSyncState('error');}
+};
+
+// ─── CLIENTS ───
+let clientSort='alpha';
+window.setClientSort=function(s){
+  clientSort=s;
+  document.getElementById('cf-sort-added').classList.toggle('active',s==='added');
+  document.getElementById('cf-sort-noshow').classList.toggle('active',s==='noshow');
+  document.getElementById('cf-sort-alpha').classList.toggle('active',s==='alpha');
+  document.getElementById('cf-sort-res').classList.toggle('active',s==='res');
+  renderClients();
+};
+function renderClients(){
+  let list=Object.values(allClients);
+  const onlyNs=document.getElementById('cf-only-noshow')?.checked;
+  if(onlyNs)list=list.filter(c=>(c.noShows||0)>0);
+  if(clientSort==='alpha'){
+    list.sort((a,b)=>(a.name||'').localeCompare(b.name||'','pl'));
+  } else if(clientSort==='added'){
+    list.sort((a,b)=>(b.id||'').localeCompare(a.id||''));
+  } else if(clientSort==='res'){
+    list.sort((a,b)=>(b.reservations||0)-(a.reservations||0)||(a.name||'').localeCompare(b.name||'','pl'));
+  } else {
+    list.sort((a,b)=>(b.noShows||0)-(a.noShows||0)||(a.name||'').localeCompare(b.name||'','pl'));
+  }
+  if(!list.length){document.getElementById('clients-list').innerHTML='<div class="empty-day">Brak klientów spełniających kryteria</div>';return;}
+  document.getElementById('clients-list').innerHTML=list.map(c=>{
+    const ns=c.noShows||0;
+    const colorClass=ns>=3?' ns-red':ns===2?' ns-yellow':'';
+    return `
+    <div class="client-item${colorClass}" onclick="openClient('${c.id}')">
+      <div>
+        <div class="client-name">${c.name}</div>
+        <div class="client-sub">${c.phone||'brak telefonu'}</div>
+      </div>
+      <div class="client-stats">rez: ${c.reservations||0}${ns>0?`<br><span class="ns">nb: ${ns}</span>`:''}</div>
+    </div>`;
+  }).join('');
+}
+
+window.openClient=function(id){
+  const c=allClients[id];if(!c)return;
+  renderClientView(id);
+  document.getElementById('cli-overlay').classList.add('show');
+};
+
+function renderClientView(id){
+  const c=allClients[id];if(!c)return;
+  document.getElementById('cli-content').innerHTML=`
+    <div class="detail-name">${c.name}</div>
+    <div class="detail-time">${c.phone||'brak telefonu'}</div>
+    <div class="detail-row"><span class="detail-label">Rezerwacje</span><span class="detail-value">${c.reservations||0}</span></div>
+    <div class="detail-row"><span class="detail-label">Nieobecności</span><span class="detail-value">${c.noShows>0?`<span class="badge-ns">⚠️ ${c.noShows}</span>`:0}</span></div>
+    ${clientAddedLabel(c)?`<div class="detail-row"><span class="detail-label">Data dodania</span><span class="detail-value">${clientAddedLabel(c)}</span></div>`:''}
+    ${c.note?`<div class="cn-note">📌 ${escapeHtml(c.note).replace(/\n/g,'<br>')}</div>`:''}
+    <button class="btn-primary btn-ghost" onclick="renderClientReservations('${id}')" style="margin-top:1rem">📋 Zobacz rezerwacje</button>
+    <button class="btn-primary btn-ghost" onclick="renderClientEdit('${id}')" style="margin-top:0.5rem">✏️ Edytuj dane klienta</button>
+    <button class="btn-primary btn-ghost" onclick="closeOverlay('cli-overlay')" style="margin-top:0.5rem">Zamknij</button>
+    <button class="btn-primary btn-danger btn-ghost" onclick="deleteClient('${id}')" style="margin-top:1.2rem">🗑️ Usuń klienta</button>
+  `;
+}
+window.renderClientView=renderClientView;
+
+function escapeHtml(str){
+  return (str||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+window.deleteClient=async function(id){
+  const c=allClients[id];if(!c)return;
+  if(!confirm(`Na pewno usunąć klienta "${c.name}" z bazy? Tej operacji nie można cofnąć. Zapisane rezerwacje NIE zostaną usunięte.`))return;
+  setSyncState('syncing');
+  try{
+    await deleteDoc(doc(db,'clients',id));
+    setSyncState('ok');
+    closeOverlay('cli-overlay');
+    toast('Klient usunięty');
+  }catch(e){setSyncState('error');toast('Błąd usuwania — sprawdź połączenie');}
+};
+
+// ─── CLIENT RESERVATION HISTORY ───
+const MIES_SKR=['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+function fmtDateShort(str){
+  const [y,m,d]=str.split('-').map(Number);
+  return d+' '+MIES_SKR[m-1]+' '+y;
+}
+function clientAddedLabel(c){
+  // Nowi klienci mają zapisane createdAt. Dla starszych wpisów bez tego pola
+  // odczytujemy przybliżony czas dodania z prefiksu ID (patrz funkcja uid()).
+  let ms=null;
+  if(c.createdAt){
+    ms=new Date(c.createdAt).getTime();
+  } else if(c.id && c.id.length>4){
+    const guess=parseInt(c.id.slice(0,-4),36);
+    if(!isNaN(guess))ms=guess;
+  }
+  if(!ms)return null;
+  const d=new Date(ms);
+  const dStr=d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());
+  return fmtDateShort(dStr)+', '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+}
+
+window.renderClientReservations=async function(id){
+  const c=allClients[id];if(!c)return;
+  document.getElementById('cli-content').innerHTML=`
+    <div class="sheet-title">Historia rezerwacji — ${c.name}</div>
+    <div class="empty-day">Ładowanie…</div>
+  `;
+  try{
+    let snap;
+    if(c.phone){
+      snap=await getDocs(query(collection(db,'reservations'),where('phone','==',c.phone)));
+    } else {
+      snap=await getDocs(query(collection(db,'reservations'),where('name','==',c.name)));
+    }
+    let list=[];
+    snap.forEach(d=>list.push(d.data()));
+    // Zabezpieczenie: jeśli szukamy po telefonie, odfiltruj ewentualne
+    // niedokładne dopasowania (różne formatowanie numeru).
+    if(c.phone)list=list.filter(r=>phoneDigits(r.phone)===phoneDigits(c.phone));
+    list.sort((a,b)=> b.date===a.date ? (b.time||'').localeCompare(a.time||'') : b.date.localeCompare(a.date));
+
+    const rows=list.map(r=>{
+      const people=r.adults+(r.kids||0);
+      const peopleLabel=r.kids>0?`${r.adults}+${r.kids} os.`:`${people} os.`;
+      const badge=r.noShow?'<span class="rh-badge noshow">nieobecność</span>':r.arrived?'<span class="rh-badge arrived">był/a</span>':'';
+      return `
+      <div class="rh-row${r.noShow?' rh-noshow':''}" onclick="closeOverlay('cli-overlay');selectCalendarDay('${r.date}')">
+        <div>
+          <div class="rh-date">${fmtDateShort(r.date)} · ${r.time}${badge}</div>
+          <div class="rh-sub">${r.table?'Stolik '+r.table+' · ':''}${r.notes?r.notes:''}</div>
+        </div>
+        <div class="rh-people">${peopleLabel}<span class="rh-arrow"> ›</span></div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('cli-content').innerHTML=`
+      <div class="sheet-title">Historia rezerwacji — ${c.name}</div>
+      ${list.length?rows:'<div class="empty-day">Brak zapisanych rezerwacji</div>'}
+      <button class="btn-primary btn-ghost" onclick="renderClientView('${id}')" style="margin-top:1rem">← Wróć</button>
+      <button class="btn-primary btn-ghost" onclick="closeOverlay('cli-overlay')" style="margin-top:0.5rem">Zamknij</button>
+    `;
+  }catch(e){
+    document.getElementById('cli-content').innerHTML=`
+      <div class="sheet-title">Historia rezerwacji — ${c.name}</div>
+      <div class="empty-day">Błąd pobierania — sprawdź połączenie</div>
+      <button class="btn-primary btn-ghost" onclick="renderClientView('${id}')" style="margin-top:1rem">← Wróć</button>
+    `;
+  }
+};
+
+window.renderClientEdit=function(id){
+  const c=allClients[id];if(!c)return;
+  document.getElementById('cli-content').innerHTML=`
+    <div class="sheet-title">Edytuj klienta</div>
+    <div class="f-group">
+      <label class="f-label">Imię i nazwisko</label>
+      <input type="text" class="f-input" id="ce-name" value="${(c.name||'').replace(/"/g,'&quot;')}">
+    </div>
+    <div class="f-group">
+      <label class="f-label">Telefon</label>
+      <input type="tel" class="f-input" id="ce-phone" value="${c.phone||''}" onblur="this.value=formatPhone(this.value)">
+    </div>
+    <div class="f-group">
+      <label class="f-label">Stała notatka <span class="opt">(opcjonalne, np. alergie, preferencje)</span></label>
+      <textarea class="f-input" id="ce-note" rows="3" placeholder="np. alergia na orzechy, lubi stolik przy oknie...">${escapeHtml(c.note||'')}</textarea>
+    </div>
+    <button class="btn-primary" onclick="saveClientEdit('${id}')">Zapisz</button>
+    <button class="btn-primary btn-ghost" onclick="renderClientView('${id}')" style="margin-top:0.5rem">Anuluj</button>
+  `;
+};
+
+window.saveClientEdit=async function(id){
+  const name=document.getElementById('ce-name').value.trim();
+  const phone=formatPhone(document.getElementById('ce-phone').value);
+  const note=document.getElementById('ce-note').value.trim();
+  if(!name){toast('Podaj imię i nazwisko');return;}
+  if(phone){
+    const other=Object.values(allClients).find(x=>x.id!==id && x.phone && phoneDigits(x.phone)===phoneDigits(phone));
+    if(other && !confirm(`Ten numer telefonu jest już przypisany do klienta "${other.name}". Zapisać mimo to?`))return;
+  }
+  setSyncState('syncing');
+  try{
+    await updateDoc(doc(db,'clients',id),{name,phone,note});
+    setSyncState('ok');
+    toast('Zapisano zmiany klienta ✓');
+    renderClientView(id);
+  }catch(e){setSyncState('error');toast('Błąd zapisu — sprawdź połączenie');}
+};
+
+// ─── UTILS ───
+window.closeOverlay=function(id){document.getElementById(id).classList.remove('show')};
+window.toast=function(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300)};
+
+document.querySelectorAll('.overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');});
+});
+</script>
+
+<!-- PIN SCREEN -->
+<div class="pin-screen" id="pin-screen">
+  <div class="pin-dots">
+    <div class="pin-dot" id="pd0"></div>
+    <div class="pin-dot" id="pd1"></div>
+    <div class="pin-dot" id="pd2"></div>
+    <div class="pin-dot" id="pd3"></div>
+    <div class="pin-dot" id="pd4"></div>
+    <div class="pin-dot" id="pd5"></div>
+  </div>
+  <div class="pin-error" id="pin-error"></div>
+  <div class="pin-pad">
+    <button class="pin-btn" onclick="pinKey('1')">1</button>
+    <button class="pin-btn" onclick="pinKey('2')">2</button>
+    <button class="pin-btn" onclick="pinKey('3')">3</button>
+    <button class="pin-btn" onclick="pinKey('4')">4</button>
+    <button class="pin-btn" onclick="pinKey('5')">5</button>
+    <button class="pin-btn" onclick="pinKey('6')">6</button>
+    <button class="pin-btn" onclick="pinKey('7')">7</button>
+    <button class="pin-btn" onclick="pinKey('8')">8</button>
+    <button class="pin-btn" onclick="pinKey('9')">9</button>
+    <button class="pin-btn empty"></button>
+    <button class="pin-btn" onclick="pinKey('0')">0</button>
+    <button class="pin-btn del" onclick="pinDel()">⌫</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const USERS = {
+    '482913': 'Ola',
+    '306756': 'Filemon',
+  };
+
+  const PIN_LENGTH = 6;
+  const SESSION_KEY = 'filemon_pin_ok';
+  const USER_KEY = 'filemon_user';
+  let entered = '';
+
+  // set logo src from apple-touch-icon (jeśli element istnieje)
+  const pinLogoImg = document.getElementById('pin-logo-img');
+  if (pinLogoImg) {
+    const iconLink = document.querySelector('link[rel="apple-touch-icon"]');
+    if (iconLink) pinLogoImg.src = iconLink.href;
+  }
+
+  function checkSession(){
+    if(sessionStorage.getItem(SESSION_KEY)==='1' && sessionStorage.getItem(USER_KEY)){
+      document.getElementById('pin-screen').style.display='none';
+      window.dispatchEvent(new CustomEvent('filemon-login', {detail:{name:sessionStorage.getItem(USER_KEY)}}));
+    }
+  }
+  checkSession();
+
+  window.pinKey = function(k){
+    if(entered.length >= PIN_LENGTH) return;
+    entered += k;
+    updateDots();
+    if(entered.length === PIN_LENGTH) verify();
+  };
+
+  window.pinDel = function(){
+    entered = entered.slice(0,-1);
+    updateDots();
+    document.getElementById('pin-error').textContent='';
+    document.querySelectorAll('.pin-dot').forEach(d=>d.classList.remove('error'));
+  };
+
+  function updateDots(){
+    for(let i=0;i<PIN_LENGTH;i++){
+      document.getElementById('pd'+i).classList.toggle('filled', i < entered.length);
+    }
+  }
+
+  function verify(){
+    const name = USERS[entered];
+    if(name){
+      sessionStorage.setItem(SESSION_KEY,'1');
+      sessionStorage.setItem(USER_KEY,name);
+      const s = document.getElementById('pin-screen');
+      s.style.transition='opacity 0.3s';
+      s.style.opacity='0';
+      setTimeout(()=>s.style.display='none',300);
+      window.dispatchEvent(new CustomEvent('filemon-login', {detail:{name}}));
+    } else {
+      document.querySelectorAll('.pin-dot').forEach(d=>d.classList.add('error'));
+      document.getElementById('pin-error').textContent='Nieprawidłowy PIN';
+      setTimeout(()=>{
+        entered='';
+        updateDots();
+        document.querySelectorAll('.pin-dot').forEach(d=>d.classList.remove('error'));
+        document.getElementById('pin-error').textContent='';
+      },900);
+    }
+  }
+
+  window.filemonLogout = function(){
+    sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(USER_KEY);
+    location.reload();
+  };
+})();
+
+</script>
+</body>
+</html>
