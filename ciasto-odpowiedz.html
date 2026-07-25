@@ -170,8 +170,8 @@ function bezOgonkow(str) {
 }
 
 // ─── DANE DO PRZELEWU — uzupełnij prawdziwe dane firmy przed użyciem ───
-const KONTO_NUMER   = 'PL00 0000 0000 0000 0000 0000 0000';
-const KONTO_ODBIORCA = 'Filemon Kocia Kawiarnia';
+const KONTO_NUMER   = '38 1140 2004 0000 3402 8231 5170';
+const KONTO_ODBIORCA = 'Filemon';
 
 function phoneDigits(val){
   let d=(val||'').replace(/\D/g,'');
@@ -230,7 +230,7 @@ const dataKrotka = data ? skrocData(data) : '';
 function buildConfirmText(){
   const ciastaB = bezOgonkow(ciasta);
   const dataB   = bezOgonkow(dataKrotka || data);
-  let txt = `Czesc ${imie}!\n\nMamy wolny termin! Potwierdzamy zamowienie:\n${ciastaB}\n\nOdbior: ${dataB} o ${godz}\n\nWartosc zamowienia: ${wartosc} zl\nZadatek (30%) do wplaty w ciagu 48h:\n${zadatek} zl na konto:\n${bezOgonkow(KONTO_NUMER)}\nOdbiorca: ${bezOgonkow(KONTO_ODBIORCA)}\nTytul: Zadatek ${imie} ${dataB}\n\nPozostalo do zaplaty przy odbiorze: ${pozostalo} zl\n\nDo zobaczenia!\nFilemon Kocia Kawiarnia`;
+  let txt = `Czesc ${imie}!\n\nMamy wolny termin! Zamowienie:\n${ciastaB}\n\nOdbior: ${dataB} o ${godz}\n\nWartosc zamowienia: ${wartosc} zl\nZadatek do wplaty w ciagu 24h:\n${zadatek} zl na konto:\n${bezOgonkow(KONTO_NUMER)}\nOdbiorca: ${bezOgonkow(KONTO_ODBIORCA)}\nTytul: Zadatek ${imie} ${dataB}\n\nDo zaplaty przy odbiorze: ${pozostalo} zl\n\nDo zobaczenia!\nFilemon Kocia Kawiarnia`;
   return bezOgonkow(txt);
 }
 function buildDenyText(){
