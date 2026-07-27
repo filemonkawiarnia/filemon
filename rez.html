@@ -1373,7 +1373,7 @@ document.querySelectorAll('.overlay').forEach(o=>{
       s.style.opacity='0';
       setTimeout(()=>s.style.display='none',300);
       window.dispatchEvent(new CustomEvent('filemon-login', {detail:{name}}));
-      requestFullscreenSafe();
+      //requestFullscreenSafe();
     } else {
       document.querySelectorAll('.pin-dot').forEach(d=>d.classList.add('error'));
       document.getElementById('pin-error').textContent='Nieprawidłowy PIN';
