@@ -561,7 +561,7 @@ function fmtDateLabel(str){
   const today=todayStr();
   const tom=new Date();tom.setDate(tom.getDate()+1);
   const tomStr=tom.toISOString().slice(0,10);
-  let pre=str===today?'Dziś — ':str===tomStr?'Jutro — ':'';
+  let pre=str===today?'Dziś - ':str===tomStr?'Jutro - ':'';
   return pre+d+' '+mies[m-1]+' ('+dni[date.getDay()]+')';
 }
 
@@ -649,7 +649,7 @@ function renderDay(){
     const kids=hrRes.reduce((s,r)=>s+r.kids,0);
     let warn='';
     if(kids>=KIDS_RED)warn='<span class="slot-warn">🔴</span>';
-    else if(kids>=KIDS_WARN)warn='<span class="slot-warn">⚠️</span>';
+    else if(kids>=KIDS_WARN)warn='<span class="slot-warn">🟡</span>';
     const isLateSlot=isToday && timeToMinutes(h)<=nowMin;
     const chips=hrRes.map(r=>{
       let cls='res-chip';
