@@ -1419,9 +1419,9 @@ document.querySelectorAll('.overlay').forEach(o=>{
   );
   // Jeśli sesja PIN już jest aktywna (np. po odświeżeniu strony), spróbuj wejść w pełny ekran
   // od razu po pierwszym dotknięciu ekranu (wymóg przeglądarek — musi to być gest użytkownika).
-  if(sessionStorage.getItem(SESSION_KEY)==='1'){
-    document.addEventListener('click',function once(){ requestFullscreenSafe(); document.removeEventListener('click',once); },{once:true});
-  }
+  //if(sessionStorage.getItem(SESSION_KEY)==='1'){
+    //document.addEventListener('click',function once(){ requestFullscreenSafe(); document.removeEventListener('click',once); },{once:true});
+  //}
 })();
 
 
