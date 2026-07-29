@@ -230,7 +230,7 @@ const dataKrotka = data ? skrocData(data) : '';
 function buildConfirmText(){
   const ciastaB = bezOgonkow(ciasta);
   const dataB   = bezOgonkow(dataKrotka || data);
-  let txt = `Czesc, ${imie}!\n\nMamy wolny termin! Zamowienie:\n${ciastaB}\n\nOdbior: ${dataB} od ${godz}\n\nWartosc zamowienia: ${wartosc} zl\nZadatek do wplaty w ciagu 24h:\n${zadatek} zl na konto:\n${bezOgonkow(KONTO_NUMER)}\nOdbiorca: ${bezOgonkow(KONTO_ODBIORCA)}\nTytul: Zadatek, ${imie} ${dataB}\n\nDo zaplaty przy odbiorze: ${pozostalo} zl\n\nDo zobaczenia!\nFilemon Kocia Kawiarnia`;
+  let txt = `Czesc, ${imie}!\n\nMamy wolny termin! Zamowienie:\n${ciastaB}\n\nOdbior: ${dataB} od ${godz}\n\nWartosc zamowienia: ${wartosc} zl\nZadatek do wplaty w ciagu 24h:\n${zadatek} zl na konto:\n${bezOgonkow(KONTO_NUMER)}\nOdbiorca: ${bezOgonkow(KONTO_ODBIORCA)}\nTytul: ciasto-${imie}\n\nDo zaplaty przy odbiorze: ${pozostalo} zl\n\nDo zobaczenia!\nFilemon Kocia Kawiarnia`;
   return bezOgonkow(txt);
 }
 function buildDenyText(){
