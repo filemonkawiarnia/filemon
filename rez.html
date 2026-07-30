@@ -979,10 +979,10 @@ window.openDetail=function(id){
       <button class="btn-primary ${r.noShow?'':' btn-warn'}" onclick="toggleNoShow('${id}')">${r.noShow?'Cofnij nieobecność':'Oznacz nieobecność'}</button>
       ${r.phone?(r.smsSent
         ? `<button class="btn-primary btn-ghost" disabled style="opacity:0.5;cursor:default" title="SMS został już wysłany">✅ SMS wysłany</button>`
-        : `<button class="btn-primary btn-ghost" onclick="openSmsConfirm('${id}')">💬 SMS potwierdzenie</button>`
+        : `<button class="btn-primary btn-ghost" onclick="openSmsConfirm('${id}')">Wyślij SMS</button>`
       ):''}
       <button class="btn-primary btn-danger" onclick="deleteRes('${id}')">Usuń rezerwację</button>
-      <button class="btn-primary btn-ghost" onclick="printTableCard('${id}')">🖨️ Drukuj</button>
+      <button class="btn-primary btn-ghost" onclick="printTableCard('${id}')">Drukuj rezerwacje</button>
       <button class="btn-primary btn-ghost" onclick="closeOverlay('det-overlay')">Zamknij</button>
     </div>
   `;
