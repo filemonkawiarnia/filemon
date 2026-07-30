@@ -1119,6 +1119,7 @@ function buildTableCardEscPos(name,time){
   push(p_line(""));
   push(p_line(time));
   push(P_BOLD_OFF);
+  push([GS,0x21,0x00]); // wymuszenie najmniejszej czcionki (1x1) — bez line feed, nie wydłuża wydruku
   push([ESC,0x64,4]);              // dosuwa do ok. 14cm łącznie
   push(P_CUT);
   return new Uint8Array(bytes);
