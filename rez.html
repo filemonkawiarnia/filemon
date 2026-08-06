@@ -1122,10 +1122,10 @@ function p_firstName(fullName){
 // zabezpieczenie imię jest też przycinane do maks. liczby znaków danego
 // rozmiaru, żeby nigdy nie „uciekło” na drugą linijkę.
 const P_NAME_SIZES=[
-  {code:0x44,max:7},  // 5x5 — domyślny, duży rozmiar
-  {code:0x33,max:9},  // 4x4
-  {code:0x22,max:12}, // 3x3
-  {code:0x11,max:16}  // 2x2 — najmniejszy, dla bardzo długich imion
+  {code:0x44,max:9},  // 5x5 — domyślny, duży rozmiar
+  {code:0x33,max:12},  // 4x4
+  {code:0x22,max:16}, // 3x3
+  {code:0x11,max:18}  // 2x2 — najmniejszy, dla bardzo długich imion
 ];
 function p_nameSizeFor(name){
   for(const s of P_NAME_SIZES){ if(name.length<=s.max) return s; }
