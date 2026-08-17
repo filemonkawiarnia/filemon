@@ -298,7 +298,7 @@ function zablokujWyslijPoWyslaniu(dane) {
     if (dane.tresc) {
       const trescBox = document.createElement('div');
       trescBox.style.cssText = 'margin:0.6rem 0 1rem 0;padding:0.75rem 1rem;background:#F5F5F5;border-radius:8px;font-size:0.85rem;line-height:1.4;color:#444;white-space:pre-wrap;';
-      trescBox.textContent = `Treść wysłanej wiadomości: <br>"${dane.tresc}"</br>`;
+      trescBox.textContent = `Treść wysłanej wiadomości: "${dane.tresc}"`;
       firstSection.parentNode.insertBefore(trescBox, firstSection);
     }
   }
