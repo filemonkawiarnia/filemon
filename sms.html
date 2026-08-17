@@ -688,7 +688,7 @@ if (!tel || !imie || !dataRez || !godz) {
           <button class="sms-btn save-btn" onclick="zapiszEdycje('confirm')">Zapisz</button>
         </div>
         <div class="btn-row" id="btn-row-confirm">
-          <button id="btn-confirm" class="sms-btn confirm" onclick="wyslijSMS('confirm')">✅ Wyślij SMS — Potwierdzenie</button>
+          <button id="btn-confirm" class="sms-btn confirm" onclick="wyslijSMS('confirm')">✅ Wyślij SMS - Potwierdzenie</button>
           <button id="btn-star-confirm" class="sms-btn star-btn" onclick="przelaczAltSMS()" title="Wersja: stolik dostępny tylko 1 godzinę">Tylko na 1h</button>
           <button id="btn-doc-confirm" class="sms-btn doc-btn${potrzebnyDokument ? ' active' : ''}" onclick="przelaczDokumentDopisek()" title="Dopisek: Pamiętaj o dokumencie">👶</button>
           ${!czyPolski ? `<button id="btn-lang-confirm" class="sms-btn lang-btn${jezykAngielskiAktywny ? ' active' : ''}" onclick="przelaczJezykSMS()" title="Wersja SMS-ów (potwierdzenie i brak miejsc) w języku angielskim">🇬🇧 EN</button>` : ''}
@@ -707,7 +707,7 @@ if (!tel || !imie || !dataRez || !godz) {
           <button class="sms-btn save-btn" onclick="zapiszEdycje('deny')">Zapisz</button>
         </div>
         <div class="btn-row" id="btn-row-deny">
-          <button id="btn-deny" class="sms-btn deny" onclick="wyslijSMS('deny')">❌ Wyślij SMS — Brak miejsc</button>
+          <button id="btn-deny" class="sms-btn deny" onclick="wyslijSMS('deny')">❌ Wyślij SMS - Brak miejsc</button>
           <button class="sms-btn edit-btn" onclick="edytujSMS('deny')"> ✏️ </button>
         </div>
       </div>
