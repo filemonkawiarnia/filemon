@@ -318,7 +318,7 @@ function zablokujWyslijPoWyslaniu(dane) {
     const banner = document.createElement('div');
     banner.style.cssText = 'margin:0 0 1rem 0;border-left:4px solid #E8A73A;background:#FFF7E8;color:#7A5200;padding:0.85rem 1rem;border-radius:8px;font-size:0.9rem;line-height:1.4;';
     const kiedy = dane.wyslanoO ? new Date(dane.wyslanoO).toLocaleString('pl-PL') : '';
-    banner.textContent = `⚠️ SMS (${dane.typ === 'confirm' ? 'potwierdzenie' : 'brak miejsc'}) został już wysłany dla tej rezerwacji${kiedy ? ' — ' + kiedy : ''}. Wysyłka z tego linku jest zablokowana, także z innych urządzeń.`;
+    banner.textContent = `⚠️ SMS (${dane.typ === 'confirm' ? 'potwierdzenie' : 'brak miejsc'}) został już wysłany dla tej rezerwacji${kiedy ? ' — ' + kiedy : ''}.`;
     firstSection.parentNode.insertBefore(banner, firstSection);
     if (dane.tresc) {
       const trescBox = document.createElement('div');
@@ -383,13 +383,13 @@ async function sprawdzLimitDzieci() {
       ikona = '⛔';
       tytul = 'Limit dzieci przekroczony';
       opis = `W przedziale ${okno} zajętych jest już ${zajete}/${LIMIT_DZIECI} miejsc dla dzieci. `
-           + `Ta rezerwacja (${dzieci} dzieci) przekracza limit — rezerwacja jest niemożliwa.\n\n`
-           + `Wysyłka SMS-a z potwierdzeniem nie jest zablokowana — decyzję podejmij ręcznie.`;
+           + `Ta rezerwacja (${dzieci} dzieci) przekracza limit - rezerwacja jest niemożliwa.\n\n`
+           + `Wysyłka SMS-a z potwierdzeniem nie jest zablokowana - decyzję podejmij ręcznie.`;
     } else if (pozostalo === 1) {
       pokaz = true;
       ikona = 'ℹ️';
       tytul = 'Zostało jedno wolne miejsce';
-      opis = `W przedziale ${okno} zajętych jest ${zajete}/${LIMIT_DZIECI} miejsc dla dzieci — zostało tylko 1 wolne miejsce.`;
+      opis = `W przedziale ${okno} zajętych jest ${zajete}/${LIMIT_DZIECI} miejsc dla dzieci - zostało tylko 1 wolne miejsce.`;
     }
 
     if (pokaz) {
@@ -442,11 +442,10 @@ async function sprawdzNieobecnosc() {
 
     document.getElementById('popup-noshow-icon').textContent = '⚠️';
     document.getElementById('popup-noshow-title').textContent = 'Klient nie przyszedł na rezerwację';
-    let opis = `Ten klient ma już odnotowaną nieobecność (${klient.noShows}× nie przyszedł/przyszła na rezerwację).`;
+    let opis = `Ten klient ma już odnotowaną nieobecność (${klient.noShows}× nie przyszedł na rezerwację).`;
     if (daty.length) {
       opis += `\n\n${daty.length > 1 ? 'Daty' : 'Data'}: ${daty.map(formatujDatePl).join(', ')}`;
     }
-    opis += `\n\nWeź to pod uwagę przy tej rezerwacji.`;
     document.getElementById('popup-noshow-desc').textContent = opis;
     document.getElementById('popup-noshow').classList.add('show');
   } catch (e) {
